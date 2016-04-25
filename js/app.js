@@ -31,11 +31,16 @@ $('#same-as').change(function(){
 
 
 });
-$(document).ready(function() {
-    $('#example').DataTable( {
-        scrollY:        '50vh',
+$('#example').DataTable( {
+    responsive: true,
+	   scrollY:        '50vh',
         scrollCollapse: true,
-        paging:         true
-		
-    });
+        paging:         false
+	
 } );
+  var dataTable = $('#example').dataTable();
+    $("#custom-searchbox").keyup(function() {
+        dataTable.fnFilter(this.value);
+    });    
+
+

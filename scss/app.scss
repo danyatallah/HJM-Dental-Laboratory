@@ -53,10 +53,11 @@
 @import 'partials/variables';
 @import 'hover';
 @import 'partials/dataf';
+@import 'partials/responsive-data';
 
 .off-canvas-wrapper,
 .off-canvas-wrapper-inner,
-.off-canvas{
+.off-canvas,body, html{
 	height:100%;
 
 }
@@ -75,7 +76,7 @@
 	a{
 		color: $porcelain;
 		&:hover{
-			background: $hjm-secondary;
+			background: $hjm-blue;
 		}
 		width: 100%;
 	}
@@ -122,7 +123,54 @@
 		}
 	}
 }
-
+.title-callout{
+	margin-bottom: 50px;
+}
 .datatable{
 	margin: 15px;
+	a{
+		color: black;
+		&:hover{
+			text-decoration: underline;
+			color: $hjm-secondary;
+		}
+	}
+}
+.table-icon{
+	margin-right: 10px;
+}
+.dataTables_filter{
+display: none;
+}
+.data-dropdown-menu{
+	a{
+		color:gray;
+	}
+	a:hover{
+		background-color: $hjm-primary;
+		color: $porcelain;
+	}
+}
+#transaction-modal{
+	a{
+		color: black;
+	}
+	#new-case{
+		a:hover{
+			color: $porcelain;
+			background: $hjm-primary;
+		}
+	}
+	#new-invoice{
+		a:hover{
+			color: $porcelain;
+			background: $hjm-blue;
+		}
+	}
+	#new-inactive{
+		a:hover{
+			color: $porcelain;
+			background: #ec5840;
+		}
+	}
 }
