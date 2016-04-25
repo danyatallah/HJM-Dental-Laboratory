@@ -12,7 +12,9 @@
     "foundation-sites": "~6.2.0",
     "motion-ui": "~1.2.2",
     "font-awesome": "fontawesome#^4.6.1",
-    "normalize-scss": "normalize.scss#^4.1.0"
+    "normalize-scss": "normalize.scss#^4.1.0",
+    "hover": "^2.0.2",
+    "datatables.net-zf": "^1.10.11"
   },
   "ignore": [
     "**/.*",
