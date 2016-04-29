@@ -17,6 +17,7 @@
     <ul class="vertical menu app-menu">
           <li><a href="#"><i class="fa fa-home fa-fw"></i> Home</a></li>
           <li><a href="#"><i class="fa fa-user fa-fw"></i>Customer</a></li>
+          <li><a href="#"><i class="fa fa fa-pencil-square-o fa-fw"></i>Orders</a></li>
           <li><a href="#"><i class="fa fa-truck fa-fw"></i>Supplier</a></li>
           <li><a href="#"><i class="fa fa-wrench fa-fw"></i>Inventory</a></li>
         </ul>

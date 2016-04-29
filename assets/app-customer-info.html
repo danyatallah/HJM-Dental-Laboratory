@@ -14,10 +14,11 @@
 	<div class="row">
 		<div class="app-logo"></div>
 		<ul class="vertical menu app-menu">
-          <li><a href="#"><i class="fa fa-home fa-lg"></i> Home</a></li>
-          <li><a href="#"><i class="fa fa-user fa-lg"></i>Customer</a></li>
-          <li><a href="#"><i class="fa fa-truck fa-lg"></i>Supplier</a></li>
-          <li><a href="#"><i class="fa fa-wrench fa-lg"></i>Inventory</a></li>
+          <li><a href="#"><i class="fa fa-home fa-fw"></i> Home</a></li>
+          <li><a href="#"><i class="fa fa-user fa-fw"></i>Customer</a></li>
+          <li><a href="#"><i class="fa fa fa-pencil-square-o fa-fw"></i>Orders</a></li>
+          <li><a href="#"><i class="fa fa-truck fa-fw"></i>Supplier</a></li>
+          <li><a href="#"><i class="fa fa-wrench fa-fw"></i>Inventory</a></li>
         </ul>
 	</div>
 	</div>
@@ -28,14 +29,76 @@
 		<div class="title-bar-title"><a href="#"><img src="images/hjmlogo.png"><span>HJM Dental Laboratory</span></a></div>
 		</div>
 		</div>
-		<div class="callout fixed" style="background: #f7f9fb;">
-			<div class="row column">
-				<h4 class="float-left"><strong>Customer</strong></h4>
-				<a data-open="exampleModal1" class="button hjm-secondary float-right hvr-icon-hang">Add New Customer</a>
+		<div class="fixed">
+		  <nav class="top-bar hjm-secondary" data-topbar role="navigation">
+			...
+		  </nav>
+		</div>
+		<div class="callout fixed title-callout" style="background: #f7f9fb;">
+			<div class="row expanded">
+				<div class="large-8 small-12 columns">
+					<div class="row">
+							<div class="medium-12 columns">
+									<h4 class="app-customer-name"><strong>Dr. Welvin Medina</strong></h4>
+							</div>
+					</div>
+					<div class="row">
+						<div class="small-12 columns">
+							<p class="subheader" id="customer-company-display">Dental Teeth Massage</p>
+						</div>
+			            <div class="small-12 columns">
+			            	  <p class="subheader">#28 Kalantas Street, Western Bicutan</p>
+						</div>
+			        </div>
+				</div>
+				<div class="large-4 small-12 columns">
+				<!--Edit Info-->
+					<div class="row">
+						<div class="small-6 columns">
+							<a data-open="edit-info" class="button secondary">Edit Information</a>
+						</div>
+						<div class="small-6 columns">
+							<a class="button hvr-icon-hang" data-open="transaction-modal">New Transaction</a>
+						</div>
+						<!--Transaction Modal-->
+						<div class="reveal" id="transaction-modal" data-reveal>
+							<ul class="menu vertical">
+									<h3><strong>New Transaction</strong></h3>
+							  <li id="new-case"><a href="#" data-open="new-case-modal"><i class="fa fa-pencil-square-o fa-2x" ></i>New Case</a></li>
+							  <hr>
+							  <li id="new-invoice"><a href="#"><i class="fa fa-clipboard fa-2x"></i>Make Invoice</a></li>
+							  <hr>
+							  <li id="new-inactive"><a href="#" data-open="inactive-modal" ><i class="fa fa-ban fa-2x"></i>Make Account Inactive</a></li>
+							</ul>
+								  <button class="close-button" data-close aria-label="Close modal" type="button">
+									<span aria-hidden="true">&times;</span>
+								  </button>
+						</div>
+						<!--Inactive Modal-->
+						<div class="reveal" id="inactive-modal" data-reveal>
+						 <i class="fa fa-exclamation-triangle fa-3x" style="color: red; margin: 0 auto;"></i><p>Are you sure you want to make Welvin Olamit Medina inactive?</p>
+						  <hr>
+						  <button data-close class="button float-left hvr-icon-back success" >No</button>
+						  <button class="button float-right hvr-icon-forward alert" type="submit">Yes</button>
+						  <button class="close-button" data-close aria-label="Close reveal" type="button">
+							<span aria-hidden="true">&times;</span>
+						  </button>
+						</div>
+						<!--New Case Modal -->
+						<div class="reveal" id="new-case-modal" data-reveal>
+						 	
+						  <button data-close class="button float-left hvr-icon-back success" >No</button>
+						  <button class="button float-right hvr-icon-forward alert" type="submit">Yes</button>
+						  <button class="close-button" data-close aria-label="Close reveal" type="button">
+							<span aria-hidden="true">&times;</span>
+						  </button>
+						</div>
+					</div>
+				</div>
 			</div>
 			<!--Modal-->
 			<div class="row">
-				<div class="large reveal" id="exampleModal1" data-reveal data-animation-in="slide-in-down" data-animation-out="slide-out-up">
+				<div class="large reveal" id="edit-info" data-reveal data-animation-in="slide-in-down" data-animation-out="slide-out-up">
 				  <h3 id="add-modal"><i class="fa fa-user"></i><strong>Dentist Information</strong></h3>
 				  <!--Form-->
 					<form data-abide novalidate>
@@ -198,24 +261,99 @@
 			</div>
 			<!--End Modal-->
 		</div>
-		<div class="datatable">
-			<table id="example" class="display" cellspacing="0" width="100%">
-				<thead>
-					<tr>
-						<th>Customer Name</th>
-						<th>Company Name</th>
-						<th>Contact Number</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Welvin Medina</td>
-						<td>Bunot Ipin Gang</td>
-						<td>09776343077</td>
-					</tr>
-				</tbody>			
-			</table>
+		<!--Body Content-->
+		<div class="app-body-content">
+			<ul class="tabs" data-tabs id="customer-info">
+			  <li class="tabs-title is-active"><a href="#customer-details" aria-selected="true"><strong>Customer Details</strong></a></li>
+			  <li class="tabs-title"><a href="#customer-inCases"><strong>In Cases</strong></a></li>
+			</ul>
+			 <div class="tabs-content" data-tabs-content="customer-info">
+			  <div class="tabs-panel is-active" id="customer-details">
+				<div class="row expanded">
+					<div class="large-6 columns">
+						<div class="row">
+							<div class="large-4 columns">
+								<label for="#" class="float-left cust-details-label"><p><strong>Customer Name :</strong></p></label>
+							</div>
+							<div class="large-5 columns end">
+								<p>Dr. Welvin Medina</p>
+							</div>
+							<hr>
+						</div>
+						<div class="row">
+							<div class="large-4 columns">
+								<label for="#" class="float-left cust-details-label"><p><strong>Email Address :</strong></p></label>
+							</div>
+							<div class="large-5 columns end">
+								<p>welvs.medina@gmail.com</p>
+							</div>
+							<hr>
+						</div>
+						<div class="row">
+							<div class="large-4 columns">
+								<label for="#" class="float-left cust-details-label"><p><strong>Telephone :</strong></p></label>
+							</div>
+							<div class="large-5 columns end">
+								<p></p>
+							</div>
+							<hr>
+						</div>
+						<div class="row">
+							<div class="large-4 columns">
+								<label for="#" class="float-left cust-details-label"><p><strong>Mobile :</strong></p></label>
+							</div>
+							<div class="large-5 columns end">
+								<p>Dr. Welvin Medina</p>
+							</div>
+							<hr>
+						</div>
+						<div class="row">
+							<div class="large-4 columns">
+								<label for="#" class="float-left cust-details-label"><p><strong>Website :</strong></p></label>
+							</div>
+							<div class="large-5 columns end">
+								<p>Dr. Welvin Medina</p>
+							</div>
+							<hr>
+						</div>
+						<div class="row">
+							<div class="large-4 columns">
+								<label for="#" class="float-left cust-details-label"><p><strong>Notes:</strong></p></label>
+							</div>
+							<div class="large-8 columns">
+								<textarea name="" id="" cols="30" rows="2"></textarea>
+							</div>
+							<hr>
+						</div>
+					</div>
+					<div class="large-6 columns">
+						<div class="row">
+							<div class="large-4 columns">
+								<label for="#" class="float-left cust-details-label"><p><strong>Billing Address :</strong></p></label>
+							</div>
+							<div class="large-5 columns end">
+								<p>Dr. Welvin Medina</p>
+							</div>
+							<hr>
+						</div>
+						<div class="row">
+							<div class="large-4 columns">
+								<label for="#" class="float-left cust-details-label"><p><strong>Shipping Address :</strong></p></label>
+							</div>
+							<div class="large-5 columns end">
+								<p>welvs.medina@gmail.com</p>
+							</div>
+							<hr>
+						</div>
+					</div>
+				</div>
+			  </div>
+			  <div class="tabs-panel" id="customer-inCases">
+				<p>Suspendisse dictum feugiat nisl ut dapibus.  Vivamus hendrerit arcu sed erat molestie vehicula. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.  Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.</p>
+			  </div>
+			</div>
 		</div>
+	<!--End Of Body Content -->
 	</div>
 </div>
 </div>
@@ -226,6 +364,8 @@
     <script src="bower_components/foundation-sites/dist/foundation.js"></script>
     <script src="bower_components/datatables.net/js/jquery.dataTables.js"></script>
     <script src="bower_components/datatables.net-zf/js/dataTables.foundation.js"></script>
+    <script src="bower_components/datatables.net-responsive/js/dataTables.responsive.js"></script>
+    <script src="bower_components/datatables.net-responsive-zf/js/responsive.foundation.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>
