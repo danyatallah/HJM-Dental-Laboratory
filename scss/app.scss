@@ -54,6 +54,8 @@
 @import 'hover';
 @import 'partials/dataf';
 @import 'partials/responsive-data';
+@import 'partials/select';
+@import 'partials/data-button';
 
 .hjm-app{
 	.off-canvas-wrapper,
@@ -175,6 +177,51 @@ display: none;
 		}
 	}
 }
+	.order-callout{
+		background: $sem-white;
+		border-top: 10px solid $hjm-secondary;
+		margin-top: 8px;
+	}
+	.order-nav{
+		a{
+			color: $hjm-gray;
+			&:hover{
+				color: $hjm-tertiary;
+			}
+		}
+		#new-order{
+			color: $hjm-gray;
+			&:hover{
+				color: $porcelain;
+				background: $hjm-primary;
+			}
+		}
+		#inProd-order{
+			color: $hjm-gray;
+			&:hover{
+				color: $porcelain;
+				background: $hjm-tertiary;
+			}
+		}
+		#complete-order{
+			color: $hjm-gray;
+			&:hover{
+				color: $porcelain;
+				background: $success-color;
+			}
+		}
+		#hold-order{
+			color: $hjm-gray;
+			&:hover{
+				color: $porcelain;
+				background: $alert-color;
+			}
+		}
+	}
+	.status-box{
+		height: 15px;
+		width: 105px;
+	}
 	//HJM-app-end
 }
 
