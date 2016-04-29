@@ -4,20 +4,62 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HJM</title>
+    <title>HJM Dental Laboratory</title>
     <link rel="stylesheet" href="css/app.css">
   </head>
-  <body>
-<div class="off-canvas-wrapper">
+  <body class="hjm-site">
+  <!--
+	  <header id="main-header">
+			<div class="container">
+				<div class="top-bar hide-for-small-only">
+				  <div class="expanded row">
+				  	<div class="large-3 medium-6 columns">
+				  		<i class="fa fa-mobile fa-lg top-bar-icons" id="mobile-icon"></i><span>(+63) 919 321 9329</span>
+				  	</div>
+				  	<div class="large-3 medium-6 columns">
+				  		<i class="fa fa-phone fa-lg top-bar-icons" id="phone-icon"></i><span>844-45-09   /   889-10-99   /   845-07-11</span>
+				  	</div>
+				  	<div class="large-3 medium-6 columns">
+				  		<i class="fa fa-map-marker fa-lg top-bar-icons" id="mapMarker-icon"></i><span>521 Int. Inocencio St., Pasay City</span>
+				  	</div>
+				  	<div class="large-3 medium-6 columns">
+				  		<i class="fa fa-envelope fa-lg top-bar-icons" id="envelope-icon"></i><span>hjmdentallaboratory@gmail.com</span>
+				  	</div>
+				  </div>
+				</div>
+			</div>
+			<div class="container">
+				<div class="top-bar-header" style="background: white;">
+				 	<div class="row">
+				 		<div class="large-2 medium-2 columns">
+							<div class="site-logo">
+								<a href="#"><img src="images/hjm-logo.png" alt=""></a>
+							</div>
+				 		</div>
+				 		<div class="large-10 medium-10 columns">
+				 			<ul class="menu" id="site-nav">
+							  <li><a href="#">HOME</a></li>
+							  <li><a href="#">ABOUT</a></li>
+							  <li><a href="#">OUR WORKS</a></li>
+							  <li><a href="#">SERVICES</a></li>
+							  <li><a href="#">BLOG</a></li>
+							</ul>
+				 		</div>
+				 	</div>
+				</div>
+			</div>
+	  </header> -->
+	  
+  	<div class="off-canvas-wrapper">
 <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
 	<div class="off-canvas position-left reveal-for-large" id="my-info" data-off-canvas data-position="left">
 	<div class="row">
 		<div class="app-logo"></div>
 		<ul class="vertical menu app-menu">
-          <li><a href="#"><i class="fa fa-home fa-lg"></i> Home</a></li>
-          <li><a href="#"><i class="fa fa-user fa-lg"></i>Customer</a></li>
-          <li><a href="#"><i class="fa fa-truck fa-lg"></i>Supplier</a></li>
-          <li><a href="#"><i class="fa fa-wrench fa-lg"></i>Inventory</a></li>
+          <li><a href="#"><i class="fa fa-home fa-fw"></i> Home</a></li>
+          <li><a href="#"><i class="fa fa-user fa-fw"></i>Customer</a></li>
+          <li><a href="#"><i class="fa fa-truck fa-fw"></i>Supplier</a></li>
+          <li><a href="#"><i class="fa fa-wrench fa-fw"></i>Inventory</a></li>
         </ul>
 	</div>
 	</div>
@@ -28,9 +70,14 @@
 		<div class="title-bar-title"><a href="#"><img src="images/hjmlogo.png"><span>HJM Dental Laboratory</span></a></div>
 		</div>
 		</div>
-		<div class="callout fixed" style="background: #f7f9fb;">
+		<div class="fixed">
+		  <nav class="top-bar hjm-secondary" data-topbar role="navigation">
+			...
+		  </nav>
+		</div>
+		<div class="callout fixed title-callout" style="background: #f7f9fb;">
 			<div class="row column">
-				<h4 class="float-left"><strong>Customer</strong></h4>
+				<h4 class="float-left"><i class="fa fa-user fa-lg"></i><strong>Customer</strong></h4>
 				<a data-open="exampleModal1" class="button hjm-secondary float-right hvr-icon-hang">Add New Customer</a>
 			</div>
 			<!--Modal-->
@@ -199,33 +246,43 @@
 			<!--End Modal-->
 		</div>
 		<div class="datatable">
-			<table id="example" class="display" cellspacing="0" width="100%">
+		<label for="">Search
+			<input type="text" id="custom-searchbox">
+		</label>
+		
+			<table id="example" class="display responsive nowrap" cellspacing="0" width="100%">
 				<thead>
 					<tr>
-						<th>Customer Name</th>
-						<th>Company Name</th>
+						<th style="width: 400px;"><i class="fa fa-user fa-lg table-icon"></i>Customer Name / Company
+						</th>
+						<th>Address</th>
 						<th>Contact Number</th>
+						<th style="width:50px;">Action</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td>Welvin Medina</td>
+						<td><a href="#"><h5><strong>Welvin Medina</strong></h5></a>
+						<p class="subheader">Dental Massage</p>
+						</td>
 						<td>Bunot Ipin Gang</td>
 						<td>09776343077</td>
+						<td>
+							<button class="small button" data-open="transaction-modal">New Transaction</button>
+						</td>
 					</tr>
 				</tbody>			
 			</table>
+			-
 		</div>
 	</div>
 </div>
 </div>
-
+  
 	
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/what-input/what-input.js"></script>
     <script src="bower_components/foundation-sites/dist/foundation.js"></script>
-    <script src="bower_components/datatables.net/js/jquery.dataTables.js"></script>
-    <script src="bower_components/datatables.net-zf/js/dataTables.foundation.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>

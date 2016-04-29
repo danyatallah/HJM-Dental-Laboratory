@@ -55,7 +55,8 @@
 @import 'partials/dataf';
 @import 'partials/responsive-data';
 
-.off-canvas-wrapper,
+.hjm-app{
+	.off-canvas-wrapper,
 .off-canvas-wrapper-inner,
 .off-canvas,body, html{
 	height:100%;
@@ -173,4 +174,43 @@ display: none;
 			background: #ec5840;
 		}
 	}
+}
+	//HJM-app-end
+}
+
+//front page
+.hjm-site{
+	#mobile-icon{
+	color: gray;
+}
+#phone-icon{
+	color: $hjm-secondary;
+}
+#mapMarker-icon{
+	color: #247a26;
+}
+#envelope-icon{
+	color: #a40914;
+}
+.top-bar-icons{
+	margin-right: 5px;
+}
+
+.top-bar-header{
+	@include top-bar-container;
+	border-bottom: 10px solid $hjm-secondary;
+	height: 115px;
+}
+#site-nav{
+	background: transparent;
+	position: relative;
+	top: 50px;
+	a{
+		color: $hjm-gray;
+		&:hover{
+			color: $hjm-secondary;
+		}
+	}
+}
+//HJM-site end	
 }
