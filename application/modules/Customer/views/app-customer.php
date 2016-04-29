@@ -202,7 +202,7 @@
 				echo		
 						'
 							<tr>
-									<td><a href="#"><h5><strong>'.$dentist->title.' '.$dentist->firstname.' '.$dentist->lastname.'</strong></h5></a>
+									<td><a href="'.base_url("Customer/CustomerInfo").'/'.$dentist->DentistID.'"><h5><strong>'.$dentist->title.' '.$dentist->firstname.' '.$dentist->lastname.'</strong></h5></a>
 											<p class="subheader">'.$dentist->company.'</p>
 											</td>
 											<td>'.$dentist->bstreet.', '.$dentist->bbrgy.', '.$dentist->bcity.'</td>

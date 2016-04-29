@@ -85,19 +85,57 @@ class mdlCustomer extends CI_Model {
 		
 	}
 	
-	function modify($options = array())
+	function modifyDentist($options = array())
 	{		
-		if(isset($options['username']))
-			$this->db->set('username', $options['username']);
+		
+		
+		if(isset($options['title']))
+			$this->db->set('title', $options['title']);
 			
-		if(isset($options['password']))
-			$this->db->set('password', md5($options['password']));
+		if(isset($options['firstname']))
+			$this->db->set('firstname', $options['firstname']);
+			
+		if(isset($options['middlename']))
+			$this->db->set('middlename', $options['middlename']);
+
+		if(isset($options['lastname']))
+			$this->db->set('lastname', $options['lastname']);
+
+		if(isset($options['email']))
+			$this->db->set('email', $options['email']);
+
+		if(isset($options['telephone']))
+			$this->db->set('telephone', $options['telephone']);
+
+		if(isset($options['mobile']))
+			$this->db->set('mobile', $options['mobile']);
+
+		if(isset($options['website']))
+			$this->db->set('website', $options['website']);
+
+		if(isset($options['bstreet']))
+			$this->db->set('bstreet', $options['bstreet']);
+
+		if(isset($options['bbrgy']))
+			$this->db->set('bbrgy', $options['bbrgy']);
+
+		if(isset($options['bcity']))
+			$this->db->set('bcity', $options['bcity']);
+
+		if(isset($options['shipstreet']))
+			$this->db->set('shipstreet', $options['shipstreet']);
 		
-		if(isset($options['permission']))
-			$this->db->set('permission', $options['permission']);
+		if(isset($options['shipbrgy']))
+			$this->db->set('shipbrgy', $options['shipbrgy']);
+
+		if(isset($options['shipcity']))
+			$this->db->set('shipcity', $options['shipcity']);
+
+		if(isset($options['notes']))
+			$this->db->set('notes', $options['notes']);
 		
-		$this->db->where('user_id', $options['user_id']);
-		$this->db->update('user');
+		$this->db->where('DentistID', $options['DentistID']);
+		$this->db->update('tbldentist');
 		
 		return $this->db->affected_rows();
 		
