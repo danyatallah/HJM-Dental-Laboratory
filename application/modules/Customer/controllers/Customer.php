@@ -105,13 +105,10 @@ class Customer extends MX_Controller
 		}
 	}
 	
-	public function deleteuser()
+	public function deleteDentist()
 	{	
-		$this->load->model('mdlUsers');
-		
-		$this->mdlUsers->deleteUser($this->uri->segment(3));
-			
-		redirect('Student_management');
+		$this->mdlCustomer->deleteDentist($this->uri->segment(3));	
+		redirect('Customer');
 	}
 	
 	function validate_credentials()

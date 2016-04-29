@@ -181,29 +181,44 @@
 					<tr>
 						<th style="width: 400px;"><i class="fa fa-user fa-lg table-icon"></i>Customer Name / Company
 						</th>
-						<th>Address</th>
+						<th><center>Address</center></th>
 						<th>Contact Number</th>
-						<th style="width:50px;">Action</th>
+						<th style="width:50px;"><center>Action</center></th>
 					</tr>
 				</thead>
 				<tbody>
+					
+										
 	<?php
+	$id='';
+	$name='';
+	
 	if(isset($dentists) && is_array($dentists) && count($dentists) > 0)
     	{
       		foreach ($dentists as $dentist)
-      		{
+      		{	$id=$dentist->DentistID;
+      			$name=$dentist->title.' '.$dentist->firstname.' '.$dentist->lastname;
+				
 				echo		
-									'<tr>
-											<td><a href="#"><h5><strong>'.$dentist->title.' '.$dentist->firstname.' '.$dentist->lastname.'</strong></h5></a>
+						'
+							<tr>
+									<td><a href="#"><h5><strong>'.$dentist->title.' '.$dentist->firstname.' '.$dentist->lastname.'</strong></h5></a>
 											<p class="subheader">'.$dentist->company.'</p>
 											</td>
 											<td>'.$dentist->bstreet.', '.$dentist->bbrgy.', '.$dentist->bcity.'</td>
 											<td>'.$dentist->mobile.'</td>
 											<td>
-											<button class="small button" data-open="transaction-modal">New Transaction</button>
-											</td>
-										</tr>
-									
+											<a href="Customer/deleteDentist/'.$dentist->DentistID.'"class="button float-right hvr-icon-forward alert">Make Inactive</a>
+										
+										
+								
+				</td>
+			</tr>'
+					;
+			}
+		}
+	?>			
+
 								<div class="reveal" id="transaction-modal" data-reveal>
 									<ul class="menu vertical">
 								  			<h3><strong>New Transaction</strong></h3>
@@ -218,21 +233,15 @@
 										  </button>
 								</div>
 								<div class="reveal" id="inactive-modal" data-reveal>
-								 <i class="fa fa-exclamation-triangle fa-3x" style="color: red; margin: 0 auto;"></i><p>Are you sure you want to make Welvin Olamit Medina inactive?</p>
+								 <i class="fa fa-exclamation-triangle fa-3x" style="color: red; margin: 0 auto;"></i><p>Are you sure you want to make <?php echo $name;?> inactive?</p>
 								  <hr>
 								  <button data-close class="button float-left hvr-icon-back success" >No</button>
-								  <button class="button float-right hvr-icon-forward alert" type="submit">Yes</button>
+								  
 								  <button class="close-button" data-close aria-label="Close reveal" type="button">
 									<span aria-hidden="true">&times;</span>
 								  </button>
 								</div>
 							</div>
-						</div>
-					</div>
-					</div>';
-			}
-		}
-	?>
-
+						
 				</tbody>			
 			</table>

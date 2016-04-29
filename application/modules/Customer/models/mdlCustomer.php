@@ -103,10 +103,10 @@ class mdlCustomer extends CI_Model {
 		
 	}
 	
-	function deleteUser($id)
+	function deleteDentist($id)
 	{
-		$this->db->where('user_id', $id);
-		$this->db->delete('user');	
+		$this->db->where('DentistID', $id);
+		$this->db->delete('tbldentist');	
 		return true;
 	}
 	function validate()
