@@ -92,8 +92,9 @@ class Customer extends MX_Controller
 			if($_POST['same'] != Null)
 			{
 						$dentist = array(
-							'DentistID' => $_POST['DentistID'],
+							
 									'title'=>$_POST['title'],
+									'DentistID' => $_POST['DentistID'],
 									'firstname'=>$_POST['firstname'],
 									'lastname' => $_POST['lastname'],
 									'middlename' => $_POST['middlename'],
@@ -112,6 +113,7 @@ class Customer extends MX_Controller
 						
 						if($this->mdlCustomer->modifyDentist($dentist))
 							redirect('Customer/CustomerInfo/'.$_POST['DentistID']);
+						redirect('Customer/CustomerInfo/'.$_POST['DentistID']);
 			}
 			else
 			{
@@ -137,6 +139,7 @@ class Customer extends MX_Controller
 						
 						if($this->mdlCustomer->modifyDentist($dentist))
 						redirect('Customer/CustomerInfo/'.$_POST['DentistID']);
+					redirect('Customer/CustomerInfo/'.$_POST['DentistID']);
 			}
 		}
 		else
