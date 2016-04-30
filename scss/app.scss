@@ -240,7 +240,7 @@ display: none;
 	color: #a40914;
 }
 .top-bar-icons{
-	margin-right: 5px;
+	margin-right: 10px;
 }
 
 .top-bar-header{
@@ -255,9 +255,41 @@ display: none;
 	a{
 		color: $hjm-gray;
 		&:hover{
-			color: $hjm-secondary;
+			color: $hjm-tertiary;
 		}
 	}
 }
+	#first-footer{
+		height: 300px;
+		margin-top: 20px;
+		background-color: $hjm-blue;
+	}
+	#second-footer{
+		height: 100px;
+		background-color: $hjm-lightGray;
+		text-align: center;
+		.menu{
+			 display: table;
+     margin: 0 auto;
+			position: relative;
+			top: 10px;
+		}
+		.dash{
+			color: white;
+		}
+		h6{
+			position: relative;
+			top: 5px;
+			color: $porcelain;
+		}
+	}
+	.footer-contact-menu{
+		color: $porcelain;
+		margin-top: 85px;
+		li{
+			margin-top: 10px;
+		}
+	}
+	  
 //HJM-site end	
 }
