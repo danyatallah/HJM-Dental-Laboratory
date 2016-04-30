@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/css/app.css">
     
   </head>
-  <body>
+  <body class="hjm-app">
 <div class="off-canvas-wrapper">
 <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
   <div class="off-canvas position-left reveal-for-large" id="my-info" data-off-canvas data-position="left">
@@ -17,7 +17,7 @@
     <ul class="vertical menu app-menu">
           <li><a href="#"><i class="fa fa-home fa-fw"></i> Home</a></li>
           <li><a href="<?php echo base_url('Customer');?>"><i class="fa fa-user fa-fw"></i>Customer</a></li>
-          <li><a href="#"><i class="fa fa fa-pencil-square-o fa-fw"></i>Orders</a></li>
+          <li><a href="<?php echo base_url('Order');?>"><i class="fa fa fa-pencil-square-o fa-fw"></i>Orders</a></li>
           <li><a href="#"><i class="fa fa-truck fa-fw"></i>Supplier</a></li>
           <li><a href="#"><i class="fa fa-wrench fa-fw"></i>Inventory</a></li>
         </ul>

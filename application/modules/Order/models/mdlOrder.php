@@ -1,11 +1,11 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class mdlCustomer extends CI_Model {
+class mdlOrder extends CI_Model {
 	
 	public function __construct(){
 		parent:: __construct();
 	}
-
+	
 	function getOrder($options = array())
 	{
 		//verification
@@ -59,8 +59,9 @@ class mdlCustomer extends CI_Model {
 		//die($this->db->last_query());
 		return $query->result();
 	}
-	
-	
+
+
+
 	function getDentist($options = array())
 	{
 		//verification
@@ -136,9 +137,9 @@ class mdlCustomer extends CI_Model {
 		return $query->result();
 	}
 	
-	function AddDentist($options = array())
+	function AddOrder($options = array())
 	{
-		$this->db->insert('tbldentist', $options);	
+		$this->db->insert('tblcase', $options);	
 		return $this->db->insert_id();
 		
 	}

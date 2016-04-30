@@ -1,88 +1,70 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Customer extends MX_Controller
+class Order extends MX_Controller
 {
 	function __construct(){
 		parent::__construct();
 		$this->load->view('template/header');
-		$this->load->model('mdlCustomer');
+		$this->load->model('mdlOrder');
 	}
 	
 	public function index(){
-		$data['dentists'] = $this->mdlCustomer->getDentist(array());	
-		$this->load->view('app-customer',$data);
+		
+		$data['cases'] = $this->mdlOrder->getOrder(array());
+		$data['dentists'] = $this->mdlOrder->getDentist(array());	
+		$this->load->view('app-orders',$data);
 		$this->load->view('template/footer');
 	}
-	
 	public function CustomerInfo()
 	{
-		$data['cases'] = $this->mdlCustomer->getOrder(array('DentistID'=>$this->uri->segment(3)));
 		$data['dentists'] = $this->mdlCustomer->getDentist(array('DentistID'=>$this->uri->segment(3)));	
 		$this->load->view('app-customer-info',$data);
 		$this->load->view('template/footer');
 	}
 
-	public function login()
-	{
-		
-     	$this->load->view('users/login');
-  		 
-	}
-	public function AddDentist()
+	
+	public function AddOrder()
 	{
 	
-		if($this->input->post('submit'))
-		{
-			if($_POST['same'] != Null)
+		$config['upload_path'] = './assets/file';
+        $config['allowed_types'] = 'jpeg|png|jpg';
+        $config['max_size']    = '30720';
+
+        //load upload class library
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('filename'))
+        {
+            // case - failure
+            $upload_error = array('error' => $this->upload->display_errors());
+            $this->load->view('upload_file_view', $upload_error);
+        }
+        else
+        {
+            // case - success
+           $upload_data = $this->upload->data();
+			if($this->input->post('submit'))
 			{
-						$dentist = array(
-									'title'=>$_POST['title'],
-									'firstname'=>$_POST['firstname'],
-									'lastname' => $_POST['lastname'],
-									'middlename' => $_POST['middlename'],
-									'company' =>$_POST['company'],
-									'email' => $_POST['email'],
-									'telephone' => $_POST['telephone'],
-									'mobile' => $_POST['mobile'],
-									'website' => $_POST['website'],
-									'bstreet' => $_POST['bstreet'],
-									'bbrgy' => $_POST['bbrgy'],
-									'bcity' => $_POST['bcity'],
-									'shipstreet' => $_POST['bstreet'],
-									'shipcity' => $_POST['bcity'],
-									'shipbrgy' => $_POST['bbrgy'],
-									'notes' => $_POST['notes'] );
+			
+						$case = array(
+									'DentistID'=>$_POST['DentistID'],
+									'patient'=>$_POST['patient'],
+									'duedate' => $_POST['due-date'],
+									'duetime' => $_POST['due-time'],
+									'gender' =>$_POST['gender'],
+									'age' => $_POST['age'],
+									'notes' => $_POST['notes'],
+									'file' => $upload_data['file_name']
+									);
 						
-						if($this->mdlCustomer->AddDentist($dentist))
-							redirect('Customer');
+						if($this->mdlOrder->AddOrder($case))
+						redirect('Customer/CustomerInfo/'.$_POST['DentistID']);
+
 			}
 			else
 			{
-						$dentist = array(
-									'title'=>$_POST['title'],
-									'firstname'=>$_POST['firstname'],
-									'lastname' => $_POST['lastname'],
-									'middlename' => $_POST['middlename'],
-									'company' =>$_POST['company'],
-									'email' => $_POST['email'],
-									'telephone' => $_POST['telephone'],
-									'mobile' => $_POST['mobile'],
-									'website' => $_POST['website'],
-									'bstreet' => $_POST['bstreet'],
-									'bbrgy' => $_POST['bbrgy'],
-									'bcity' => $_POST['bcity'],
-									'shipstreet' => $_POST['shipstreet'],
-									'shipcity' => $_POST['shipcity'],
-									'shipbrgy' => $_POST['shipbrgy'],
-									'notes' => $_POST['notes'] );
-						
-						if($this->mdlCustomer->AddDentist($dentist))
-							redirect('Customer');
+				$this->load->view('users/register');
 			}
-		}
-		else
-		{
-			$this->load->view('users/register');
 		}
 
 	}

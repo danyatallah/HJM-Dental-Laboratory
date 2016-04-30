@@ -7,7 +7,7 @@
     <title>HJM</title>
     <link rel="stylesheet" href="css/app.css">
   </head>
-  <body>
+  <body class="hjm-app">
 <div class="off-canvas-wrapper">
 <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
 	<div class="off-canvas position-left reveal-for-large" id="my-info" data-off-canvas data-position="left">
@@ -193,7 +193,7 @@
 							<fieldset class="float-right">
 							  <button class="button success hvr-icon-forward" type="Submit" value="Submit">Submit</button>
 							</fieldset>
-						</div>
+							</div>
 					</form>
 				  <!--End Form-->
 					<button class="close-button" data-close aria-label="Close modal" type="button">
@@ -206,9 +206,9 @@
 		<div class="datatable">
 		<label for="">Search
 			<input type="text" id="custom-searchbox">
-		</label>
+			</label>
 		
-			<table id="example" class="display responsive nowrap" cellspacing="0" width="100%">
+			<table id="j-table" class="display responsive nowrap" cellspacing="0" width="100%">
 				<thead>
 					<tr>
 						<th style="width: 400px;"><i class="fa fa-user fa-lg table-icon"></i>Customer Name / Company
@@ -226,33 +226,12 @@
 						<td>Bunot Ipin Gang</td>
 						<td>09776343077</td>
 						<td>
-						<button class="small button" data-open="transaction-modal">New Transaction</button>
+							<button class="small button" data-open="transaction-modal">New Transaction</button>
 						</td>
 					</tr>
 				</tbody>			
 			</table>
-			<div class="reveal" id="transaction-modal" data-reveal>
-				<ul class="menu vertical">
-			  			<h3><strong>New Transaction</strong></h3>
-				  <li id="new-case"><a href="#"><i class="fa fa-pencil-square-o fa-2x"></i>New Case</a></li>
-				  <hr>
-				  <li id="new-invoice"><a href="#"><i class="fa fa-clipboard fa-2x"></i>Make Invoice</a></li>
-				  <hr>
-				  <li id="new-inactive"><a href="#" data-open="inactive-modal" ><i class="fa fa-ban fa-2x"></i>Make Account Inactive</a></li>
-				</ul>
-					  <button class="close-button" data-close aria-label="Close modal" type="button">
-						<span aria-hidden="true">&times;</span>
-					  </button>
-			</div>
-			<div class="reveal" id="inactive-modal" data-reveal>
-			 <i class="fa fa-exclamation-triangle fa-3x" style="color: red; margin: 0 auto;"></i><p>Are you sure you want to make Welvin Olamit Medina inactive?</p>
-			  <hr>
-			  <button data-close class="button float-left hvr-icon-back success" >No</button>
-			  <button class="button float-right hvr-icon-forward alert" type="submit">Yes</button>
-			  <button class="close-button" data-close aria-label="Close reveal" type="button">
-				<span aria-hidden="true">&times;</span>
-			  </button>
-			</div>
+			-
 		</div>
 	</div>
 </div>
