@@ -68,6 +68,55 @@ class Order extends MX_Controller
 		}
 
 	}
+
+
+
+
+	public function EditOrder()
+	{
+	
+		$config['upload_path'] = './assets/file';
+        $config['allowed_types'] = 'jpeg|png|jpg';
+        $config['max_size']    = '30720';
+
+        //load upload class library
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('filename'))
+        {
+            // case - failure
+            $upload_error = array('error' => $this->upload->display_errors());
+            $this->load->view('upload_file_view', $upload_error);
+        }
+        else
+        {
+            // case - success
+           $upload_data = $this->upload->data();
+			if($this->input->post('submit'))
+			{
+			
+						$case = array(
+									'DentistID'=>$_POST['DentistID'],
+									'patient'=>$_POST['patient'],
+									'duedate' => $_POST['due-date'],
+									'duetime' => $_POST['due-time'],
+									'gender' =>$_POST['gender'],
+									'age' => $_POST['age'],
+									'notes' => $_POST['notes'],
+									'file' => $upload_data['file_name']
+									);
+						
+						if($this->mdlOrder->EditOrder($case))
+						redirect('Customer/CustomerInfo/'.$_POST['DentistID']);
+
+			}
+			else
+			{
+				$this->load->view('users/register');
+			}
+		}
+
+	}
 	public function EditDentist()
 	{
 	

@@ -19,10 +19,10 @@ class mdlOrder extends CI_Model {
 			$this->db->like('patient', $options['patient']);
 			
 		if(isset($options['due-time']))
-			$this->db->like('due-time', $options['due-time']);
+			$this->db->like('duetime', $options['due-time']);
 			
 		if(isset($options['due-date']))
-			$this->db->like('due-date', $options['due-date']);
+			$this->db->like('duedate', $options['due-date']);
 
 		if(isset($options['orderdatetime']))
 			$this->db->like('orderdatetime', $options['orderdatetime']);
@@ -147,59 +147,34 @@ class mdlOrder extends CI_Model {
 	function modifyDentist($options = array())
 	{		
 		
-		
-		if(isset($options['title']))
-			$this->db->set('title', $options['title']);
+
+		if(isset($options['patient']))
+			$this->db->set('patient', $options['patient']);
 			
-		if(isset($options['firstname']))
-			$this->db->set('firstname', $options['firstname']);
+		if(isset($options['due-time']))
+			$this->db->set('duetime', $options['due-time']);
 			
-		if(isset($options['middlename']))
-			$this->db->set('middlename', $options['middlename']);
+		if(isset($options['due-date']))
+			$this->db->set('duedate', $options['due-date']);
 
-		if(isset($options['lastname']))
-			$this->db->set('lastname', $options['lastname']);
+		if(isset($options['orderdatetime']))
+			$this->db->set('orderdatetime', $options['orderdatetime']);
 
+		if(isset($options['gender']))
+			$this->db->set('gender', $options['gender']);
 
-		if(isset($options['company']))
-			$this->db->set('company', $options['company']);
-
-
-		if(isset($options['email']))
-			$this->db->set('email', $options['email']);
-
-		if(isset($options['telephone']))
-			$this->db->set('telephone', $options['telephone']);
-
-		if(isset($options['mobile']))
-			$this->db->set('mobile', $options['mobile']);
-
-		if(isset($options['website']))
-			$this->db->set('website', $options['website']);
-
-		if(isset($options['bstreet']))
-			$this->db->set('bstreet', $options['bstreet']);
-
-		if(isset($options['bbrgy']))
-			$this->db->set('bbrgy', $options['bbrgy']);
-
-		if(isset($options['bcity']))
-			$this->db->set('bcity', $options['bcity']);
-
-		if(isset($options['shipstreet']))
-			$this->db->set('shipstreet', $options['shipstreet']);
-		
-		if(isset($options['shipbrgy']))
-			$this->db->set('shipbrgy', $options['shipbrgy']);
-
-		if(isset($options['shipcity']))
-			$this->db->set('shipcity', $options['shipcity']);
+		if(isset($options['age']))
+			$this->db->set('age', $options['age']);
 
 		if(isset($options['notes']))
 			$this->db->set('notes', $options['notes']);
+
+		if(isset($options['file']))
+			$this->db->set('file', $options['file']);
+
 		
-		$this->db->where('DentistID', $options['DentistID']);
-		$this->db->update('tbldentist');
+		$this->db->where('CaseID', $options['CaseID']);
+		$this->db->update('tblcase');
 		
 		return $this->db->affected_rows();
 		

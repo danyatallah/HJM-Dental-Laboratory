@@ -14,17 +14,19 @@
 							<div class="small reveal" id="order-modal" data-reveal>
 								<h3><i class="fa fa-pencil-square-o"></i><strong>New Case</strong></h3>
 								<hr>
-								<form>
+								<?php echo form_open_multipart('Order/AddOrder');?>
 									<div class="row">
 										 <div class="small-2 columns">
 										  <label for="right-label" class="text-right middle"><strong>Dentist:</strong></label>
 										</div>
 										<div class="medium-4 small-12 columns end">
-										    <select name="dentist">
-												<option value="husker">Dr. Welvin Medina</option>
-												<option value="starbuck">Dr. John Gabriel Bagacina</option>
-												<option value="hotdog">Dr. Prince Kenneth Rufino</option>
-												<option value="apollo">Dr. Ralph Pagayon</option>
+										    <select name="DentistID">
+										    	<?php 
+										    	foreach ($dentists as $dentist) 
+										    	{
+										    		echo '<option value="'.$dentist->DentistID.'">'.$dentist->title.' '.$dentist->firstname.' '.$dentist->lastname.'</option>';
+										    	}
+												?>
 											</select>
 										</div>
 									</div>
@@ -33,8 +35,9 @@
 										  <label for="right-label" class="text-right middle"><strong>Patient:</strong></label>
 										</div>
 										<div class="medium-4 small-12 columns end">
-										    <input type="text" name="patient" >
+										    <input type="text" name="patient">
 										</div>
+									
 									</div>
 									<div class="row">
 										 <div class="medium-2 small-3 columns">
@@ -49,7 +52,7 @@
 										  <label for="right-label" class="text-right middle"><strong>Due Time:</strong></label>
 										</div>
 										<div class="medium-4 small-12 columns end">
-										    <input type="time" name="due-time">
+										    <input type="time" name="due-time" required>
 										</div>
 									</div>
 									<div class="row">
@@ -57,7 +60,11 @@
 										  <label for="right-label" class="text-right middle"><strong>Gender:</strong></label>
 										</div>
 										<div class="medium-3 small-12 columns end">
-										    <input type="text" name="gender">
+										    <select id="select" name='gender'>
+										    	<option value=""></option>
+									  			<option value="Male">Male</option>
+									  			<option value="Female">Female</option>
+									  		</select>
 										</div>
 									</div>
 									<div class="row">
@@ -89,7 +96,7 @@
 										  <label for="right-label" class="text-right middle"><strong>Notes:</strong></label>
 										</div>
 										<div class="medium-9 small-12 columns end">
-										  <textarea name="notes" id="" cols="30" rows="5" required></textarea>
+										  <textarea name="notes" id="" cols="30" rows="5"required></textarea>
 										</div>
 									</div>
 									<div class="row">
@@ -98,19 +105,20 @@
 										</div>
 										<div class="medium-3 small-12 columns end">
 									    <label for="exampleFileUpload" class="button">Upload File</label>
-										    <input name="file" type="file" id="exampleFileUpload" class="show-for-sr" required>
+										    <input type="file" id="exampleFileUpload" class="show-for-sr" name="filename" required>
 										</div>
 									</div>
 									<hr>
 									<div class="row">
 										<fieldset class="float-left">
-										  <button class="button alert hvr-icon-back" data-close aria-label="Close modal" type="button">Cancel</button>
+										  <button class="button alert hvr-icon-back" data-close aria-label="Close modal" type="button"> Cancel</button>
 										</fieldset>
 										<fieldset class="float-right">
-										  <button class="button success hvr-icon-forward" type="Submit" value="Submit">Submit Order</button>
+										  
+										  <?php echo form_submit('submit', 'Submit','class="button success hvr-icon-forward"');?>
 										</fieldset>
 									</div>
-								</form>
+								<?php form_close();?>
 									<button class="close-button" data-close aria-label="Close modal" type="button">
 									<span aria-hidden="true">&times;</span>
 								  </button>
@@ -118,7 +126,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
 		<!--Body Content-->
 		<div class="app-body-content">
 		<ul class="order-nav dropdown menu" data-dropdown-menu>
@@ -165,18 +172,18 @@
 									<td>'.$ctr.'</td>
 									<td>'.$dentist->company.'</td>
 									<td>'.$case->patient.'</td>
-									<td><input type="datetime-local" name="due-date" readonly value="'.date('Y-m-d\TH:i', strtotime($case->orderdatetime)).'" style="width:231px;"></td>
-									<td><input type="datetime-local" name="due-date" readonly value="'.$case->duedate.'T'.$case->duetime.'" style="width:231px;"></td>
+									<td>'.date('l F d, Y h:i A', strtotime($case->orderdatetime)).' </td>
+									<td>'.date('l F d, Y ', strtotime($case->duedate)).date('h:i A', strtotime($case->duetime)).'</td>
 									<td>
 									<select name="status" class="status-box">
 										<option selected="new">New</option>
-										<option value="starbuck">In Production </option>
+										<option value="starbuck">In Production</option>
 										<option value="hotdog">Complete</option>
 										<option value="apollo">On Hold</option>
 									</select>
 									</td>
 									<td><a href="#">Lab Slip</a></td>
-									<td><a href="#">Edit</a></td>
+									<td><a href="'.base_url().'Customer/CustomerInfo/'.$case->DentistID.'/'.$case->CaseID.'">Edit</a></td>
 								</tr>';
 								$ctr++;
 							}

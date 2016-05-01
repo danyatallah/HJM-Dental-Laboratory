@@ -54,8 +54,11 @@
 @import 'hover';
 @import 'partials/dataf';
 @import 'partials/responsive-data';
+@import 'partials/select';
+@import 'partials/data-button';
 
-.off-canvas-wrapper,
+.hjm-app{
+	.off-canvas-wrapper,
 .off-canvas-wrapper-inner,
 .off-canvas,body, html{
 	height:100%;
@@ -173,4 +176,120 @@ display: none;
 			background: #ec5840;
 		}
 	}
+}
+	.order-callout{
+		background: $sem-white;
+		border-top: 10px solid $hjm-secondary;
+		margin-top: 8px;
+	}
+	.order-nav{
+		a{
+			color: $hjm-gray;
+			&:hover{
+				color: $hjm-tertiary;
+			}
+		}
+		#new-order{
+			color: $hjm-gray;
+			&:hover{
+				color: $porcelain;
+				background: $hjm-primary;
+			}
+		}
+		#inProd-order{
+			color: $hjm-gray;
+			&:hover{
+				color: $porcelain;
+				background: $hjm-tertiary;
+			}
+		}
+		#complete-order{
+			color: $hjm-gray;
+			&:hover{
+				color: $porcelain;
+				background: $success-color;
+			}
+		}
+		#hold-order{
+			color: $hjm-gray;
+			&:hover{
+				color: $porcelain;
+				background: $alert-color;
+			}
+		}
+	}
+	.status-box{
+		height: 15px;
+		width: 105px;
+	}
+	//HJM-app-end
+}
+
+//front page
+.hjm-site{
+	#mobile-icon{
+	color: gray;
+}
+#phone-icon{
+	color: $hjm-secondary;
+}
+#mapMarker-icon{
+	color: #247a26;
+}
+#envelope-icon{
+	color: #a40914;
+}
+.top-bar-icons{
+	margin-right: 10px;
+}
+
+.top-bar-header{
+	@include top-bar-container;
+	border-bottom: 10px solid $hjm-secondary;
+	height: 115px;
+}
+#site-nav{
+	background: transparent;
+	position: relative;
+	top: 50px;
+	a{
+		color: $hjm-gray;
+		&:hover{
+			color: $hjm-tertiary;
+		}
+	}
+}
+	#first-footer{
+		height: 300px;
+		margin-top: 20px;
+		background-color: $hjm-blue;
+	}
+	#second-footer{
+		height: 100px;
+		background-color: $hjm-lightGray;
+		text-align: center;
+		.menu{
+			 display: table;
+     margin: 0 auto;
+			position: relative;
+			top: 10px;
+		}
+		.dash{
+			color: white;
+		}
+		h6{
+			position: relative;
+			top: 5px;
+			color: $porcelain;
+		}
+	}
+	.footer-contact-menu{
+		color: $porcelain;
+		margin-top: 85px;
+		li{
+			margin-top: 10px;
+		}
+	}
+	  
+//HJM-site end	
 }
