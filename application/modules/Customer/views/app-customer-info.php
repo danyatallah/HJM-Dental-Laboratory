@@ -127,7 +127,7 @@
 										</div>
 										<div class="medium-3 small-12 columns end">
 									    <label for="exampleFileUpload" class="button">Upload File</label>
-										    <input type="file" id="exampleFileUpload" class="show-for-sr" name="filename" required>
+										    <input type="file" id="exampleFileUpload" class="show-for-sr" name="filename" required/>
 										</div>
 									</div>
 									<hr>
@@ -136,14 +136,14 @@
 										  <button class="button alert hvr-icon-back" data-close aria-label="Close modal" type="button"> Cancel</button>
 										</fieldset>
 										<fieldset class="float-right">
-										  
 										  <?php echo form_submit('submit', 'Submit','class="button success hvr-icon-forward"');?>
 										</fieldset>
 									</div>
-								<?php form_close();?>
+								
 									<button class="close-button" data-close aria-label="Close modal" type="button">
 									<span aria-hidden="true">&times;</span>
-								  </button>
+								  	</button>
+								</form>
 							</div>
 					</div>
 				</div>
@@ -303,10 +303,10 @@
 							  <button class="button alert hvr-icon-back" data-close aria-label="Close modal" type="button">Cancel</button>
 							</fieldset>
 							<fieldset class="float-right">
-							    <?php echo form_submit('submit', 'Submit', 'class="button success hvr-icon-forward"', 'type="Submit"');?>
+							    <?php echo form_submit('submit', 'Submit', 'class="button success hvr-icon-forward"');?>
 							</fieldset>
 						</div>
-					<?php form_close();?>
+					</form>
 				  <!--End Form-->
 					<button class="close-button" data-close aria-label="Close modal" type="button">
 					<span aria-hidden="true">&times;</span>
@@ -318,15 +318,31 @@
 		<!--Body Content-->
 		<div class="app-body-content">
 			<ul class="tabs" data-tabs id="customer-info">
-			  <li class="tabs-title is-active"><a href="#customer-details" aria-selected="true"><strong>Case History</strong></a></li>
+			  <li class="tabs-title <?php if($this->uri->segment(4) == null){ echo "is-active";}?>"><a href="#customer-details" ><strong>Case History</strong></a></li>
 			  <li class="tabs-title"><a href="#customer-inCases"><strong>Customer Details</strong></a></li>
+			 
+			<?php
+			if($this->uri->segment(4) != null)
+			{
+			  echo
+			  '<li class="tabs-title is-active"><a href="#customer-edit-case"><strong>Edit Case</strong></a></li>';
+			}
+			?>
 			</ul>
 			 <div class="tabs-content" data-tabs-content="customer-info">
-			  <div class="tabs-panel is-active" id="customer-details">
+			 <?php 
+			 if($this->uri->segment(4) == null)
+			 {
+			 	echo ' <div class="tabs-panel is-active" id="customer-details">';
+			 }
+			 else
+				echo ' <div class="tabs-panel" id="customer-details">';
+			 ?>
 				<!-- -->
-					<div class="row expanded">
+			
+			<div class="row expanded">
 				<div class="column medium-12 medium-order-2 large-10 large-order-1">
-		<table id="example" class="display responsive" cellspacing="0" width="100%">
+					<table id="example" class="display responsive" cellspacing="0" width="100%">
 					<thead>
 						<tr>
 							<th></th>
@@ -360,7 +376,7 @@
 							</select>
 							</td>
 							<td><a href="#">Lab Slip</a></td>
-							<td><a href="#">Edit</a></td>
+							<td><a href="'.base_url().'Customer/CustomerInfo/'.$dentists->DentistID.'/'.$case->CaseID.'">Edit</a></td>
 						</tr>';
 						$ctr++;
 					}
@@ -477,9 +493,133 @@
 						</div>
 					</div>
 				</div>
-			  </div>
 			</div>
 		</div>
+			
+			 <?php
+			 if($this->uri->segment(4) != null)
+			 {
+			 	echo '<div class="tabs-panel is-active" id="customer-edit-case">';
+			 }
+			 else
+				echo ' <div class="tabs-panel" id="customer-edit-case">';
+			 ?>
+			   
+			  	<h3 style="text-align: center;"><i class="fa fa-pencil-square-o"></i><strong>In Case</strong></h3>
+								<hr>
+								<?php echo form_open_multipart('Order/EditOrder');
+								foreach ($cases as $case) 
+								{
+								if($case->CaseID == $this->uri->segment(4))
+								{
+									echo
+								'<div class="row">
+										 <div class="small-2 columns">
+										  <label for="right-label" class="text-right middle"><strong>Ordered Date:</strong></label>
+										</div>
+										<div class="medium-3 small-12 columns end">
+										    
+										    <input type="text" value="'.date('l F d, Y h:i A', strtotime($case->orderdatetime)).'" readonly>
+										</div>
+									</div>
+									  '.form_hidden('DentistID',$this->uri->segment(3)).
+									  									  form_hidden('CaseID',$this->uri->segment(4)).'
+									<div class="row">
+										 <div class="small-2 columns">
+										  <label for="right-label" class="text-right middle"><strong>Patient:</strong></label>
+										</div>
+										<div class="medium-3 small-12 columns end">
+										    <input type="text" name="patient" value="'.$case->patient.'">
+										</div>
+									</div>
+									<div class="row">
+										 <div class="medium-2 small-3 columns">
+										  <label for="right-label" class="text-right middle"><strong>Due Date:</strong></label>
+										</div>
+										<div class="medium-2 small-12 columns end">
+										    <input type="date" name="due-date" value="'.$case->duedate.'">
+										</div>
+									</div>
+									<div class="row">
+										 <div class="medium-2 small-3 columns">
+										  <label for="right-label" class="text-right middle"><strong>Due Time:</strong></label>
+										</div>
+										<div class="medium-2 small-12 columns end">
+										    <input type="time" name="due-time" value="'.$case->duetime.'">
+										</div>
+									</div>
+									<div class="row">
+										 <div class="small-2 columns">
+										  <label for="right-label" class="text-right middle"><strong>Gender:</strong></label>
+										</div>
+										<div class="medium-2 small-12 columns end">
+										    <select id="select" name="gender">
+										    	<option value="' .$case->gender.'">'.$case->gender.'</option>
+									  			<option value="Male">Male</option>
+									  			<option value="Female">Female</option>
+									  		</select>
+										</div>
+									</div>
+									<div class="row">
+										 <div class="small-2 columns">
+										  <label for="right-label" class="text-right middle"><strong>Age:</strong></label>
+										</div>
+										<div class="medium-1 small-12 columns end">
+										    <input type="text" name="age" value="'.$case->age.'">
+										</div>
+									</div>
+									<div class="row">
+										 <div class="small-2 columns">
+										  <label for="right-label" class="text-right middle"><strong>Shade:</strong></label>
+										</div>
+										<div class="medium-2 small-12 columns end">
+										    <input type="text" name="shade">
+										</div>
+									</div>
+									<div class="row">
+										 <div class="small-2 columns">
+										  <label for="right-label" class="text-right middle"><strong>Crown:</strong></label>
+										</div>
+										<div class="medium-3 small-12 columns end">
+										    <a href="#">[+] Add a crown or bridge</a>
+										</div>
+									</div>
+									<div class="row">
+										 <div class="small-2 columns">
+										  <label for="right-label" class="text-right middle"><strong>Notes:</strong></label>
+										</div>
+										<div class="medium-5 small-12 columns end">
+										  <textarea name="notes" id="" cols="30" rows="5">'.$case->notes.'</textarea>
+										</div>
+									</div>
+									<div class="row">
+										 <div class="small-2 columns">
+										  <label for="right-label" class="text-right middle"><strong>Attachment:</strong></label>
+										</div>
+										<div class="medium-3 small-12 columns end">
+									    <label for="exampleFileUpload" class="button">Upload File</label>
+										    <input name="filename" type="file" id="exampleFileUpload" class="show-for-sr" value="'.$case->file.'">
+										</div>
+									</div>
+									<hr>
+									<div class="row">
+										<fieldset class="float-left">
+										  <a  href="'.base_url('Customer/CustomerInfo/'.$dentists->DentistID).'"class="button alert hvr-icon-back" data-close aria-label="Close modal" type="button">Cancel</a>
+										</fieldset>
+										<fieldset class="float-right">
+											'.form_submit('submit', 'Update Order', 'class="button success hvr-icon-forward"').'
+										
+										</fieldset>
+									</div>';
+								}
+								}?>
+								</form>
+			  </div>
+			  <!-- End-Edit-Case-->
+		</div>
+		</div>
+			  
+		
 	<!--End Of Body Content -->
 	</div>
 </div>

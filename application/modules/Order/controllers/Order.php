@@ -97,6 +97,7 @@ class Order extends MX_Controller
 			
 						$case = array(
 									'DentistID'=>$_POST['DentistID'],
+									'CaseID'=>$_POST['CaseID'],
 									'patient'=>$_POST['patient'],
 									'duedate' => $_POST['due-date'],
 									'duetime' => $_POST['due-time'],
@@ -106,7 +107,7 @@ class Order extends MX_Controller
 									'file' => $upload_data['file_name']
 									);
 						
-						if($this->mdlOrder->EditOrder($case))
+						if($this->mdlOrder->modifyOrder($case))
 						redirect('Customer/CustomerInfo/'.$_POST['DentistID']);
 
 			}

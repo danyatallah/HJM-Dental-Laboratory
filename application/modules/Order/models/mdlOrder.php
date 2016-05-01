@@ -144,7 +144,7 @@ class mdlOrder extends CI_Model {
 		
 	}
 	
-	function modifyDentist($options = array())
+	function modifyOrder($options = array())
 	{		
 		
 
