@@ -17,7 +17,10 @@
     "datatables.net-zf": "^1.10.11",
     "datatables.net-responsive-zf": "^2.0.2",
     "datatables.net-select-zf": "^1.1.2",
-    "datatables.net-buttons-zf": "^1.1.2"
+    "datatables.net-buttons-zf": "^1.1.2",
+    "underscore": "^1.8.3",
+    "moment": "^2.13.0",
+    "clndr": "^1.4.1"
   },
   "ignore": [
     "**/.*",

@@ -176,7 +176,7 @@
 			<input type="text" id="custom-searchbox">
 		</label>
 		
-			<table id="example" class="display responsive nowrap" cellspacing="0" width="100%">
+			<table id="j-table" class="display responsive nowrap" cellspacing="0" width="100%">
 				<thead>
 					<tr>
 						<th style="width: 400px;"><i class="fa fa-user fa-lg table-icon"></i>Customer Name / Company

@@ -31,16 +31,35 @@ $('#same-as').change(function(){
 
 
 });
-$('#example').DataTable( {
-    responsive: true,
-	   scrollY:        '50vh',
-        scrollCollapse: true,
-        paging:         false
+$('#j-table').DataTable( {
+	responsive: true,
+	scrollY: '50vh',
+	scrollCollapse: true,
+	paging: false,
+	select: true,
+	  dom: 'Bfrtip',
+        buttons: [
+            'print'
+        ],
+        columnDefs: [ {
+            orderable: false,
+            className: 'select-checkbox',
+            targets:   0
+        } ],
+        select: {
+            style:    'os',
+            selector: 'td:first-child'
+        },
+        order: [[ 1, 'asc' ]]
 	
-} );
-  var dataTable = $('#example').dataTable();
+});
+//
+  var dataTable = $('#j-table').dataTable();
     $("#custom-searchbox").keyup(function() {
         dataTable.fnFilter(this.value);
     });    
+
+
+
 
 

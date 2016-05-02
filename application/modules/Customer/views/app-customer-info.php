@@ -342,7 +342,7 @@
 			
 			<div class="row expanded">
 				<div class="column medium-12 medium-order-2 large-10 large-order-1">
-					<table id="example" class="display responsive" cellspacing="0" width="100%">
+					<table id="j-table" class="display responsive" cellspacing="0" width="100%">
 					<thead>
 						<tr>
 							<th></th>
@@ -365,8 +365,8 @@
 							<td></td>
 							<td>'.$ctr.'</td>
 							<td>'.$case->patient.'</td>
-							<td><input type="datetime-local" name="due-date" readonly value="'.date('Y-m-d\TH:i', strtotime($case->orderdatetime)).'" style="width:235px;"></td>
-							<td><input type="datetime-local" name="due-date" readonly value="'.$case->duedate.'T'.$case->duetime.'" style="width:235px;"></td>
+							<td>'.date('l F d, Y h:i A', strtotime($case->orderdatetime)).'</td>
+							<td>'.date('l F d, Y ', strtotime($case->duedate)).date('h:i A', strtotime($case->duetime)).'</td>
 							<td>
 							<select name="status" class="status-box">
 								<option selected="new">New</option>
