@@ -1,0 +1,396 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HJM Dental Laboratory</title>
+    <link rel="stylesheet" href="css/app.css">
+  </head>
+  <body class="hjm-site">
+	  <header id="main-header">
+			<div class="container" style="z-index: 1000">
+				<div class="top-bar hide-for-small-only">
+				  <div class="expanded row">
+				  	<div class="large-3 medium-6 columns">
+				  		<i class="fa fa-mobile fa-lg top-bar-icons" id="mobile-icon"></i><span>(+63) 919 321 9329</span>
+				  	</div>
+				  	<div class="large-3 medium-6 columns">
+				  		<i class="fa fa-phone fa-lg top-bar-icons" id="phone-icon"></i><span>844-45-09   /   889-10-99   /   845-07-11</span>
+				  	</div>
+				  	<div class="large-3 medium-6 columns">
+				  		<i class="fa fa-map-marker fa-lg top-bar-icons" id="mapMarker-icon"></i><span>521 Int. Inocencio St., Pasay City</span>
+				  	</div>
+				  	<div class="large-3 medium-6 columns">
+				  		<i class="fa fa-envelope fa-lg top-bar-icons" id="envelope-icon"></i><span>hjmdentallaboratory@gmail.com</span>
+				  	</div>
+				  </div>
+				</div>
+			</div>
+			<div class="container">
+				<div class="top-bar-header" style="background: white;">
+				 	<div class="row">
+				 		<div class="large-2 medium-2 columns">
+							<div class="site-logo" >
+								<a href="#"><img src="images/hjm-logo.png" alt="HJM-Logo"></a>
+							</div>
+				 		</div>
+				 		<div class="large-10 medium-10 columns">
+				 			<ul class="menu" id="site-nav">
+							  <li><a href="#" class="hvr-overline-from-center">HOME</a></li>
+							  <li><a href="#"  class="hvr-overline-from-center">ABOUT</a></li>
+							  <li><a href="#"  class="hvr-overline-from-center">OUR WORKS</a></li>
+							  <li><a href="#"  class="hvr-overline-from-center">SERVICES</a></li>
+							  <li><a href="#"  class="hvr-overline-from-center">BLOG</a></li>
+							</ul>
+				 		</div>
+				 	</div>
+				</div>
+			</div>
+	 </header> 
+	<section class="d-dash-board">
+		<div class="row">
+		<ul class="doctor-tabs" data-tabs id="doc-tabs">
+		  <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Dashboard</a></li>
+		  <li class="tabs-title"><a href="#panel2">New Case</a></li>
+		  <li class="tabs-title"><a href="#panel3">Case History</a></li>
+		  <li class="tabs-title"><a href="#panel4">Statements</a></li>
+		  <li class="tabs-title"><a href="#panel5">Account Details</a></li>
+		</ul>
+		<div class="tabs-content" data-tabs-content="doc-tabs">
+		  <div class="tabs-panel is-active" id="panel1">
+		  	<div class="row expanded">
+		  		<!--Display Picture-->
+				<div class="large-6 columns">
+					<div id="doctor-dp-greeting">
+						<div class="dp">
+						<h1 id="initial-dp"><strong>WM</strong></h1>
+						</div>
+						<h1 id="greetings"><strong>Welcome</strong>, Dr. Welvin Medina!</h1>
+					</div>
+				</div>
+				<!--Clndr jquery Plugin-->
+				<div class="large-6 columns">
+					<div class="container">
+						<div class="cal1"></div>
+						<script type="text/template" id="template-calendar">
+							<div class="clndr-controls">
+								<div class="clndr-previous-button">&lsaquo;</div>
+								<div class="month"><%= intervalStart.format('M/DD') + ' &mdash; ' + intervalEnd.format('M/DD') %></div>
+								<div class="clndr-next-button">&rsaquo;</div>
+							</div>
+							<div class="clndr-grid">
+								<div class="days-of-the-week">
+								<% _.each(daysOfTheWeek, function(day) { %>
+									<div class="header-day"><%= day %></div>
+								<% }); %>
+									<div class="days">
+									<% _.each(days, function(day) { %>
+										<div class="<%= day.classes %>"><%= day.day %></div>
+									<% }); %>
+									</div>
+								</div>
+							</div>
+							<div class="clndr-today-button">Today</div>
+						</script>     
+					</div>
+				</div>
+		   </div>
+	 	  </div>
+		  <div class="tabs-panel" id="panel2">
+			<h3><i class="fa fa-pencil-square-o"></i><strong>New Case</strong></h3>
+								<hr>
+								<form>
+									<div class="row">
+										 <div class="small-2 columns">
+										  <label for="right-label" class="text-right middle"><strong>Patient:</strong></label>
+										</div>
+										<div class="medium-4 small-12 columns end">
+										    <input type="text" name="patient">
+										</div>
+									</div>
+									<div class="row">
+										 <div class="medium-2 small-3 columns">
+										  <label for="right-label" class="text-right middle"><strong>Due Date:</strong></label>
+										</div>
+										<div class="medium-4 small-12 columns end">
+										    <input type="date" name="due-date">
+										</div>
+									</div>
+									<div class="row">
+										 <div class="medium-2 small-3 columns">
+										  <label for="right-label" class="text-right middle"><strong>Due Time:</strong></label>
+										</div>
+										<div class="medium-4 small-12 columns end">
+										    <input type="time" name="due-time">
+										</div>
+									</div>
+									<div class="row">
+										 <div class="small-2 columns">
+										  <label for="right-label" class="text-right middle"><strong>Gender:</strong></label>
+										</div>
+										<div class="medium-3 small-12 columns end">
+										    <input type="text" name="gender">
+										</div>
+									</div>
+									<div class="row">
+										 <div class="small-2 columns">
+										  <label for="right-label" class="text-right middle"><strong>Age:</strong></label>
+										</div>
+										<div class="medium-3 small-12 columns end">
+										    <input type="text" name="age">
+										</div>
+									</div>
+									<div class="row">
+										 <div class="small-2 columns">
+										  <label for="right-label" class="text-right middle"><strong>Shade:</strong></label>
+										</div>
+										<div class="medium-3 small-12 columns end">
+										    <input type="text" name="shade">
+										</div>
+									</div>
+									<div class="row">
+										 <div class="small-2 columns">
+										  <label for="right-label" class="text-right middle"><strong>Crown:</strong></label>
+										</div>
+										<div class="medium-3 small-12 columns end">
+										    <a href="#">[+] Add a crown or bridge</a>
+										</div>
+									</div>
+									<div class="row">
+										 <div class="small-2 columns">
+										  <label for="right-label" class="text-right middle"><strong>Notes:</strong></label>
+										</div>
+										<div class="medium-9 small-12 columns end">
+										  <textarea name="order-notes" id="" cols="30" rows="5"></textarea>
+										</div>
+									</div>
+									<div class="row">
+										 <div class="small-2 columns">
+										  <label for="right-label" class="text-right middle"><strong>Attachment:</strong></label>
+										</div>
+										<div class="medium-3 small-12 columns end">
+									    <label for="exampleFileUpload" class="button">Upload File</label>
+										    <input type="file" id="exampleFileUpload" class="show-for-sr">
+										</div>
+									</div>
+									<hr>
+									<div class="row columns">
+										<fieldset class="float-right">
+										  <button class="button success hvr-icon-forward" type="Submit" value="Submit">Submit Order</button>
+										</fieldset>
+									</div>
+								</form>
+		  </div>
+		  <div class="tabs-panel" id="panel3">
+		  <label for="">Search Cases
+					<input type="text" id="custom-searchbox" style="width: 300px;">
+		  </label>
+		  	<div class="row expanded">
+				<div class="column medium-12 medium-order-2 large-12 large-order-1">
+		<table id="j-table" class="display responsive" cellspacing="0" width="100%">
+					<thead>
+						<tr>
+							<th></th>
+							<th>Invoice</th>
+							<th>Company</th>
+							<th>Patient</th>
+							<th>Ordered Date</th>
+							<th>Due</th>
+							<th>Status</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+							<td>420</td>
+							<td>Dental Teeth Massage</td>
+							<td>Kenneth Rufino</td>
+							<td>Fr 10/10/2016 6 Am</td>
+							<td>Fr 10/10/2016 6 Am</td>
+							<td>New</td>
+							<td><a href="#">Lab Slip</a></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>421</td>
+							<td>Teether</td>
+							<td>Gabriel Bagacina</td>
+							<td>Fr 10/10/2016 6 Am</td>
+							<td>Su 10/10/2016 6 Am</td>
+							<td>New</td>
+							<td><a href="#">Lab Slip</a></td>
+						</tr>
+					</tbody>
+				</table>
+				</div>
+			</div>
+		  </div>
+		  <div class="tabs-panel" id="panel5">
+	  	  		<div class="large-12 columns">
+					<div id="doctor-dp-greeting">
+						<div class="dp">
+						<h1 id="initial-dp"><strong>WM</strong></h1>
+						</div>
+						<h1 id="greetings">Dr. Welvin Medina</h1>
+					</div>
+				</div>
+		  	  	<div class="row expanded">
+					<div class="large-6 large-offset-3 columns end">
+						<div class="row">
+							<div class="large-4 columns">
+								<label for="#" class="float-left cust-details-label"><p><strong>Full Name :</strong></p></label>
+							</div>
+							<div class="large-5 columns end">
+								<p>Dr. Welvin Medina</p>
+							</div>
+							<hr>
+						</div>
+						<div class="row">
+							<div class="large-4 columns">
+								<label for="#" class="float-left cust-details-label"><p><strong>Email Address :</strong></p></label>
+							</div>
+							<div class="large-5 columns end">
+								<p>welvs.medina@gmail.com</p>
+							</div>
+							<hr>
+						</div>
+						<div class="row">
+							<div class="large-4 columns">
+								<label for="#" class="float-left cust-details-label"><p><strong>Telephone :</strong></p></label>
+							</div>
+							<div class="large-5 columns end">
+								<p></p>
+							</div>
+							<hr>
+						</div>
+						<div class="row">
+							<div class="large-4 columns">
+								<label for="#" class="float-left cust-details-label"><p><strong>Mobile :</strong></p></label>
+							</div>
+							<div class="large-5 columns end">
+								<p>Dr. Welvin Medina</p>
+							</div>
+							<hr>
+						</div>
+						<div class="row">
+							<div class="large-4 columns">
+								<label for="#" class="float-left cust-details-label"><p><strong>Website :</strong></p></label>
+							</div>
+							<div class="large-5 columns end">
+								<p>Dr. Welvin Medina</p>
+							</div>
+							<hr>
+						</div>
+					</div>
+					<div class="large-6 large-offset-3 columns end">
+						<div class="row">
+							<div class="large-4 columns">
+								<label for="#" class="float-left cust-details-label"><p><strong>Billing Address :</strong></p></label>
+							</div>
+							<div class="large-5 columns end">
+								<p>Dr. Welvin Medina</p>
+							</div>
+							<hr>
+						</div>
+						<div class="row">
+							<div class="large-4 columns">
+								<label for="#" class="float-left cust-details-label"><p><strong>Shipping Address :</strong></p></label>
+							</div>
+							<div class="large-5 columns end">
+								<p>welvs.medina@gmail.com</p>
+							</div>
+							<hr>
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="large-12 columns">
+						<h3>Change your password: </h3>
+						<form>
+							<div class="row">
+										 <div class="small-2 columns">
+										  <label for="right-label" class="text-right middle"><strong>Old Password:</strong></label>
+										</div>
+										<div class="medium-4 small-12 columns end">
+										    <input type="password" name="old-pass">
+										</div>
+							</div>
+							<div class="row">
+										 <div class="small-2 columns">
+										  <label for="right-label" class="text-right middle"><strong>New Password:</strong></label>
+										</div>
+										<div class="medium-4 small-12 columns end">
+										    <input type="password" name="new-pass" >
+										</div>
+							</div>
+							<div class="row">
+										 <div class="small-2 columns">
+										  <label for="right-label" class="text-right middle"><strong>Repeat New Password:</strong></label>
+										</div>
+										<div class="medium-4 small-12 columns end">
+										    <input type="password" name="repeat-new-pass">
+										</div>
+							</div>
+							<fieldset class="float-right">
+										  <button class="button warning hvr-icon-forward" type="Submit" value="Submit">Update</button>
+										</fieldset>
+						</form>
+					</div>
+				</div>
+		  </div>
+		</div>
+		</div>
+	   <div class="row">
+
+	   </div>
+    </section>
+	
+    <footer id="main-footer">
+    	<div class="container">
+    		<section id="first-footer">
+    			<div class="row expanded">
+    				<div class="large-2 large-offset-1 small-12 columns">
+						<div id="footer-logo">
+							<img src="images/hjmlogofooter.png" alt="">
+						</div>
+    				</div>
+    				<div class="large-5 small-12 columns">
+    					<h4 id="footer-logo-text">D E N T A L &nbsp L A B O R A T O R Y</h4>
+    				</div>
+    				<div class="large-4 small-12 columns">
+    					<ul class="vertical menu footer-contact-menu">
+    						<li><i class="fa fa-map-marker fa-lg top-bar-icons" id="mapMarker-icon"></i>521 Int. Inocencio St., Pasay City
+    						</li>
+    						<li><i class="fa fa-phone fa-lg top-bar-icons" id="phone-icon"></i>844-45-09   /   889-10-99   /   845-07-11</li>
+    						<li><i class="fa fa-mobile fa-2x top-bar-icons" id="mobile-icon"></i>(+63) 919 321 9329</li>
+    						<li><i class="fa fa-envelope fa-lg top-bar-icons" id="envelope-icon"></i>hjmdentallaboratory@gmail.com</li>
+    					</ul>
+    				</div>
+    			</div>
+    		</section>
+    		<section id="second-footer">
+				<ul class="menu">
+    				<li><a href="#">Privacy</a></li>
+    				<li class="dash">-</li>
+    				<li><a href="#">Terms</a></li>
+    				<li class="dash">-</li>
+    				<li><a href="#">Mobile App</a></li>
+    			</ul>
+    			<h6>Copyright © 2016 HJM Dental Laboratory. All rights reserved.</h6>
+    		</section>
+    	</div>
+    </footer>
+	
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/what-input/what-input.js"></script>
+    <script src="bower_components/foundation-sites/dist/foundation.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+	<script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/clndr/src/clndr.js"></script>
+	<script src="bower_components/clndr/demo/demo.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

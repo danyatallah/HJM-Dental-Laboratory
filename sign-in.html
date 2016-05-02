@@ -9,7 +9,7 @@
   </head>
   <body class="hjm-site">
 	  <header id="main-header">
-			<div class="container">
+			<div class="container" style="z-index: 1000">
 				<div class="top-bar hide-for-small-only">
 				  <div class="expanded row">
 				  	<div class="large-3 medium-6 columns">
@@ -48,15 +48,51 @@
 				</div>
 			</div>
 	  </header> 
+	  <section class="body-sign-in">
+	  	<div class="container">
+	  		<div class="row">
+	  			<div class="small-12">
+	  				<div class="panel-white" id="sign-in-panel">
+						<div class="row">
+							<div class="small-12 columns">
+							<section>
+								<h4>Please Sign in</h4>
+							</section>
+								<hr>
+								<section id="sign-in-content">
+								<p>Sign in to <a href="#">HJM Dental Laboratory</a></p>
+									<form data-abide novalidate>
+										<input type="text" name="username" placeholder="HJM ID*" aria-describedby="exampleHelpText" required>
+										 <span class="form-error">
+											Username Required!
+										</span>
+										<input type="password" name="account-password" placeholder="password*" aria-describedby="exampleHelpText" required>
+										<span class="form-error">
+											Password Required!
+										</span>
+										<button class="button primary" id="sign-in-button" value="Submit" type="submit">Sign in</button>
+										<br>
+									</form>
+								<a href="#">Forget your HJM Account or password?</a>
+								</section>
+							</div>
+						</div>
+	  				</div>
+	  			</div>
+	  		</div>
+	  	</div>
+	  </section>
     <footer id="main-footer">
     	<div class="container">
     		<section id="first-footer">
     			<div class="row expanded">
-    				<div class="large-2 large-offset-1 columns">
-    					<img src="images/hjmlogofooter.png" alt="">
+    				<div class="large-2 large-offset-1 small-12 columns">
+						<div id="footer-logo">
+							<img src="images/hjmlogofooter.png" alt="">
+						</div>
     				</div>
-    				<div class="large-5 columns">
-    					<h3>D E N T A L L A B O R A T O R Y</h3>
+    				<div class="large-5 small-12 columns">
+    					<h4 id="footer-logo-text">D E N T A L &nbsp L A B O R A T O R Y</h4>
     				</div>
     				<div class="large-4 small-12 columns">
     					<ul class="vertical menu footer-contact-menu">
