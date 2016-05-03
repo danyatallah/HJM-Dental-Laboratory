@@ -8,7 +8,7 @@ class Customer extends MX_Controller
 		$this->load->model('mdlCustomer');
 		$this->is_logged_in();
 	}
-	 public function logout()
+	public function logout()
     {
         $this->session->sess_destroy();
         redirect('Home');

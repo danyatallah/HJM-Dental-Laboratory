@@ -34,7 +34,8 @@ class Home extends MX_Controller
         
         if($this->session->userdata('ps_id')==1)
             redirect('Dashboard');
-        if($this->session->userdata('ps_id')==2)
+        else
+      
             redirect('Customer');
     }
 	public function login_validation() 
