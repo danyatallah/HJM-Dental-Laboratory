@@ -1,75 +1,41 @@
-<!doctype html>
-<html class="no-js" lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HJM Dental Laboratory</title>
-    <link rel="stylesheet" href="css/app.css">
-  </head>
-  <body class="hjm-site">
-	  <header id="main-header">
-			<div class="container" style="z-index: 1000">
-				<div class="top-bar hide-for-small-only">
-				  <div class="expanded row">
-				  	<div class="large-3 medium-6 columns">
-				  		<i class="fa fa-mobile fa-lg top-bar-icons" id="mobile-icon"></i><span>(+63) 919 321 9329</span>
-				  	</div>
-				  	<div class="large-3 medium-6 columns">
-				  		<i class="fa fa-phone fa-lg top-bar-icons" id="phone-icon"></i><span>844-45-09   /   889-10-99   /   845-07-11</span>
-				  	</div>
-				  	<div class="large-3 medium-6 columns">
-				  		<i class="fa fa-map-marker fa-lg top-bar-icons" id="mapMarker-icon"></i><span>521 Int. Inocencio St., Pasay City</span>
-				  	</div>
-				  	<div class="large-3 medium-6 columns">
-				  		<i class="fa fa-envelope fa-lg top-bar-icons" id="envelope-icon"></i><span>hjmdentallaboratory@gmail.com</span>
-				  	</div>
-				  </div>
-				</div>
-			</div>
-			<div class="container">
-				<div class="top-bar-header" style="background: white;">
-				 	<div class="row">
-				 		<div class="large-2 medium-2 columns">
-							<div class="site-logo" >
-								<a href="#"><img src="images/hjm-logo.png" alt="HJM-Logo"></a>
-							</div>
-				 		</div>
-				 		<div class="large-10 medium-10 columns">
-				 			<ul class="menu" id="site-nav">
-							  <li><a href="#" class="hvr-overline-from-center">HOME</a></li>
-							  <li><a href="#"  class="hvr-overline-from-center">ABOUT</a></li>
-							  <li><a href="#"  class="hvr-overline-from-center">OUR WORKS</a></li>
-							  <li><a href="#"  class="hvr-overline-from-center">SERVICES</a></li>
-							  <li><a href="#"  class="hvr-overline-from-center">BLOG</a></li>
-							</ul>
-				 		</div>
-				 	</div>
-				</div>
-			</div>
-	 </header> 
-	<section class="d-dash-board">
+<section class="d-dash-board">
 		<div class="row">
 		<ul class="doctor-tabs" data-tabs id="doc-tabs">
-	  		<button class="button secondary float-right">Sign Out</button>
-		  <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Dashboard</a></li>
+	  		<a href="Dashboard/logout" class="button secondary float-right">Sign Out</a>
+		  <li class="tabs-title<?php if($this->uri->segment(3) == null){ echo " is-active";}?>"><a href="#panel1">Dashboard</a></li>
 		  <li class="tabs-title"><a href="#panel2">New Case</a></li>
 		  <li class="tabs-title"><a href="#panel3">Case History</a></li>
 		  <li class="tabs-title"><a href="#panel4">Statements</a></li>
 		  <li class="tabs-title"><a href="#panel5">Account Details</a></li>
-		  <li class="tabs-title"><a href="#panel6">Edit Case</a></li>
 		  
+		  <?php
+			if($this->uri->segment(3) != null)
+			{
+			  echo
+			  '<li class="tabs-title is-active"><a href="#panel6">Edit Case</a></li>';
+			}
+			?>
 		</ul>
 		<div class="tabs-content" data-tabs-content="doc-tabs">
-		  <div class="tabs-panel is-active" id="panel1">
+			
+			<?php 
+			 if($this->uri->segment(3) == null)
+			 {
+			 	echo ' <div class="tabs-panel is-active" id="panel1">';
+			 }
+			 else
+				echo ' <div class="tabs-panel" id="panel1">';
+			 ?>
+				<!-- -->
+		  
 		  	<div class="row expanded">
 		  		<!--Display Picture-->
 				<div class="large-6 columns">
 					<div id="doctor-dp-greeting">
 						<div class="dp">
-						<h1 id="initial-dp"><strong>WM</strong></h1>
+						<h1 id="initial-dp"><strong><?php echo substr($dentists->firstname, 0,1).substr($dentists->lastname, 0,1);?></strong></h1>
 						</div>
-						<h1 id="greetings"><strong>Welcome</strong>, Dr. Welvin Medina!</h1>
+						<h1 id="greetings"><strong>Welcome</strong>, <?php echo $dentists->title.' '.$dentists->firstname.' '.$dentists->lastname;?></h1>
 					</div>
 				</div>
 				<!--Clndr jquery Plugin-->
@@ -103,7 +69,7 @@
 		  <div class="tabs-panel" id="panel2">
 			<h3><i class="fa fa-pencil-square-o"></i><strong>New Case</strong></h3>
 								<hr>
-								<form>
+								<?php echo form_open_multipart('Order/AddOrder');?>
 									<div class="row">
 										 <div class="small-2 columns">
 										  <label for="right-label" class="text-right middle"><strong>Patient:</strong></label>
@@ -112,6 +78,7 @@
 										    <input type="text" name="patient">
 										</div>
 									</div>
+									<?php echo form_hidden('DentistID', $this->session->userdata('DentistID'));?>
 									<div class="row">
 										 <div class="medium-2 small-3 columns">
 										  <label for="right-label" class="text-right middle"><strong>Due Date:</strong></label>
@@ -133,7 +100,11 @@
 										  <label for="right-label" class="text-right middle"><strong>Gender:</strong></label>
 										</div>
 										<div class="medium-3 small-12 columns end">
-										    <input type="text" name="gender">
+										    <select id="select" name='gender'>
+										    	<option value=""></option>
+									  			<option value="Male">Male</option>
+									  			<option value="Female">Female</option>
+									  		</select>
 										</div>
 									</div>
 									<div class="row">
@@ -165,7 +136,7 @@
 										  <label for="right-label" class="text-right middle"><strong>Notes:</strong></label>
 										</div>
 										<div class="medium-9 small-12 columns end">
-										  <textarea name="order-notes" id="" cols="30" rows="5"></textarea>
+										  <textarea name="notes" id="" cols="30" rows="5"></textarea>
 										</div>
 									</div>
 									<div class="row">
@@ -180,7 +151,8 @@
 									<hr>
 									<div class="row columns">
 										<fieldset class="float-right">
-										  <button class="button success hvr-icon-forward" type="Submit" value="Submit">Submit Order</button>
+										  
+										  <?php echo form_submit('submit', 'Submit Order','class="button success hvr-icon-forward"');?>
 										</fieldset>
 									</div>
 								</form>
@@ -196,36 +168,41 @@
 						<tr>
 							<th></th>
 							<th>Invoice</th>
-							<th>Company</th>
 							<th>Patient</th>
-							<th>Ordered Date</th>
-							<th>Due</th>
-							<th>Status</th>
+							<th><center>Ordered Date</center></th>
+							<th><center>Due Date</center></th>
+							<th><center>Status</center></th>
+							<th></th>
 							<th></th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
+						<?php
+					$ctr=1;
+					foreach($cases as $case)
+					{
+						echo
+						'<tr>
 							<td></td>
-							<td>420</td>
-							<td>Dental Teeth Massage</td>
-							<td>Kenneth Rufino</td>
-							<td>Fr 10/10/2016 6 Am</td>
-							<td>Fr 10/10/2016 6 Am</td>
-							<td>New</td>
+							<td>'.$ctr.'</td>
+							<td>'.$case->patient.'</td>
+							<td>'.date('l F d, Y h:i A', strtotime($case->orderdatetime)).'</td>
+							<td>'.date('l F d, Y ', strtotime($case->duedate)).date('h:i A', strtotime($case->duetime)).'</td>
+							<td>
+							<select name="status" class="status-box">
+								<option selected="new">New</option>
+								<option value="starbuck">In Production </option>
+								<option value="hotdog">Complete</option>
+								<option value="apollo">On Hold</option>
+							</select>
+							</td>
 							<td><a href="#">Lab Slip</a></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td>421</td>
-							<td>Teether</td>
-							<td>Gabriel Bagacina</td>
-							<td>Fr 10/10/2016 6 Am</td>
-							<td>Su 10/10/2016 6 Am</td>
-							<td>New</td>
-							<td><a href="#">Lab Slip</a></td>
-						</tr>
-					</tbody>
+							<td><a href="'.base_url().'Dashboard/EditCase/'.$case->CaseID.'">Edit</a></td>
+						</tr>';
+						$ctr++;
+					}
+					?>
+				</tbody>
 				</table>
 				</div>
 			</div>
@@ -234,9 +211,9 @@
 	  	  		<div class="large-12 columns">
 					<div id="doctor-dp-greeting">
 						<div class="dp">
-						<h1 id="initial-dp"><strong>WM</strong></h1>
+						<h1 id="initial-dp"><strong><?php echo substr($dentists->firstname, 0,1).substr($dentists->lastname, 0,1);?></strong></h1>
 						</div>
-						<h1 id="greetings">Dr. Welvin Medina</h1>
+						<h1 id="greetings"><?php echo $dentists->title.' '.$dentists->firstname.' '.$dentists->lastname;?></h1>
 					</div>
 				</div>
 		  	  	<div class="row expanded">
@@ -246,7 +223,7 @@
 								<label for="#" class="float-left cust-details-label"><p><strong>Full Name :</strong></p></label>
 							</div>
 							<div class="large-5 columns end">
-								<p>Dr. Welvin Medina</p>
+								<p><?php echo $dentists->firstname.' '.$dentists->middlename.' '.$dentists->lastname;?></p>
 							</div>
 							<hr>
 						</div>
@@ -255,7 +232,7 @@
 								<label for="#" class="float-left cust-details-label"><p><strong>Email Address :</strong></p></label>
 							</div>
 							<div class="large-5 columns end">
-								<p>welvs.medina@gmail.com</p>
+								<p><?php echo $dentists->email;?></p>
 							</div>
 							<hr>
 						</div>
@@ -264,7 +241,7 @@
 								<label for="#" class="float-left cust-details-label"><p><strong>Telephone :</strong></p></label>
 							</div>
 							<div class="large-5 columns end">
-								<p></p>
+								<p><?php echo $dentists->telephone;?></p>
 							</div>
 							<hr>
 						</div>
@@ -273,7 +250,7 @@
 								<label for="#" class="float-left cust-details-label"><p><strong>Mobile :</strong></p></label>
 							</div>
 							<div class="large-5 columns end">
-								<p>Dr. Welvin Medina</p>
+								<p><?php echo $dentists->mobile;?></p>
 							</div>
 							<hr>
 						</div>
@@ -282,7 +259,7 @@
 								<label for="#" class="float-left cust-details-label"><p><strong>Website :</strong></p></label>
 							</div>
 							<div class="large-5 columns end">
-								<p>Dr. Welvin Medina</p>
+								<p><?php echo $dentists->website;?></p>
 							</div>
 							<hr>
 						</div>
@@ -293,7 +270,7 @@
 								<label for="#" class="float-left cust-details-label"><p><strong>Billing Address :</strong></p></label>
 							</div>
 							<div class="large-5 columns end">
-								<p>Dr. Welvin Medina</p>
+								<p><?php echo $dentists->bstreet.', '.$dentists->bbrgy.', '.$dentists->bcity;?></p>
 							</div>
 							<hr>
 						</div>
@@ -302,7 +279,7 @@
 								<label for="#" class="float-left cust-details-label"><p><strong>Shipping Address :</strong></p></label>
 							</div>
 							<div class="large-5 columns end">
-								<p>welvs.medina@gmail.com</p>
+								<p><?php echo $dentists->shipstreet.', '.$dentists->shipbrgy.', '.$dentists->shipcity;?></p>
 							</div>
 							<hr>
 						</div>
@@ -344,55 +321,83 @@
 					</div>
 				</div>
 		  </div>
-		   <div class="tabs-panel" id="panel6">
-			<h3><i class="fa fa-pencil-square-o"></i><strong>View Case</strong></h3>
+			<?php
+			 if($this->uri->segment(3) != null)
+			 {
+			 	echo '<<div class="tabs-panel is-active" id="panel6">';
+			 }
+			 else
+				echo ' <div class="tabs-panel" id="panel6">';
+			 ?>
+		
+			<h3><i class="fa fa-pencil-square-o"></i><strong>Edit Case</strong></h3>
 								<hr>
-								<form>
+								<?php echo form_open_multipart('Order/EditOrder');
+								foreach ($cases as $case) 
+								{
+								if($case->CaseID == $this->uri->segment(3))
+								{
+									echo
+								'<div class="row">
+										 <div class="small-2 columns">
+										  <label for="right-label" class="text-right middle"><strong>Ordered Date:</strong></label>
+										</div>
+										<div class="medium-3 small-12 columns end">
+										    
+										    <input type="text" value="'.date('l F d, Y h:i A', strtotime($case->orderdatetime)).'" readonly>
+										</div>
+									</div>
+									  '.form_hidden('DentistID',$this->session->userdata('DentistID')).
+									  									  form_hidden('CaseID',$this->uri->segment(3)).'
 									<div class="row">
 										 <div class="small-2 columns">
 										  <label for="right-label" class="text-right middle"><strong>Patient:</strong></label>
 										</div>
-										<div class="medium-4 small-12 columns end">
-										    <input type="text" name="patient">
+										<div class="medium-3 small-12 columns end">
+										    <input type="text" name="patient" value="'.$case->patient.'">
 										</div>
 									</div>
 									<div class="row">
 										 <div class="medium-2 small-3 columns">
 										  <label for="right-label" class="text-right middle"><strong>Due Date:</strong></label>
 										</div>
-										<div class="medium-4 small-12 columns end">
-										    <input type="date" name="due-date">
+										<div class="medium-2 small-12 columns end">
+										    <input type="date" name="due-date" value="'.$case->duedate.'">
 										</div>
 									</div>
 									<div class="row">
 										 <div class="medium-2 small-3 columns">
 										  <label for="right-label" class="text-right middle"><strong>Due Time:</strong></label>
 										</div>
-										<div class="medium-4 small-12 columns end">
-										    <input type="time" name="due-time">
+										<div class="medium-2 small-12 columns end">
+										    <input type="time" name="due-time" value="'.$case->duetime.'">
 										</div>
 									</div>
 									<div class="row">
 										 <div class="small-2 columns">
 										  <label for="right-label" class="text-right middle"><strong>Gender:</strong></label>
 										</div>
-										<div class="medium-3 small-12 columns end">
-										    <input type="text" name="gender">
+										<div class="medium-2 small-12 columns end">
+										    <select id="select" name="gender">
+										    	<option value="' .$case->gender.'">'.$case->gender.'</option>
+									  			<option value="Male">Male</option>
+									  			<option value="Female">Female</option>
+									  		</select>
 										</div>
 									</div>
 									<div class="row">
 										 <div class="small-2 columns">
 										  <label for="right-label" class="text-right middle"><strong>Age:</strong></label>
 										</div>
-										<div class="medium-3 small-12 columns end">
-										    <input type="text" name="age">
+										<div class="medium-1 small-12 columns end">
+										    <input type="text" name="age" value="'.$case->age.'">
 										</div>
 									</div>
 									<div class="row">
 										 <div class="small-2 columns">
 										  <label for="right-label" class="text-right middle"><strong>Shade:</strong></label>
 										</div>
-										<div class="medium-3 small-12 columns end">
+										<div class="medium-2 small-12 columns end">
 										    <input type="text" name="shade">
 										</div>
 									</div>
@@ -408,8 +413,8 @@
 										 <div class="small-2 columns">
 										  <label for="right-label" class="text-right middle"><strong>Notes:</strong></label>
 										</div>
-										<div class="medium-9 small-12 columns end">
-										  <textarea name="order-notes" id="" cols="30" rows="5"></textarea>
+										<div class="medium-5 small-12 columns end">
+										  <textarea name="notes" id="" cols="30" rows="5">'.$case->notes.'</textarea>
 										</div>
 									</div>
 									<div class="row">
@@ -418,67 +423,27 @@
 										</div>
 										<div class="medium-3 small-12 columns end">
 									    <label for="exampleFileUpload" class="button">Upload File</label>
-										    <input type="file" id="exampleFileUpload" class="show-for-sr">
+										    <input name="file" type="file" id="exampleFileUpload" class="show-for-sr" >
 										</div>
 									</div>
 									<hr>
-									<div class="row columns">
-										<fieldset class="float-right">
-										  <button class="button success hvr-icon-forward" type="Submit" value="Submit">Update Order</button>
+									<div class="row">
+										<fieldset class="float-left">
+										  <a  href="'.base_url('Dashboard').'"class="button alert hvr-icon-back" data-close aria-label="Close modal" type="button">Cancel</a>
 										</fieldset>
-									</div>
-								</form>
-		  </div>
+										<fieldset class="float-right">
+											'.form_submit('submit', 'Update Order', 'class="button success hvr-icon-forward"').'
+										
+										</fieldset>
+									</div>';
+								
+								}
+								}?>
+							<?php form_close();?>
+								
 		</div>
 		</div>
 	   <div class="row">
 
 	   </div>
     </section>
-	
-    <footer id="main-footer">
-    	<div class="container">
-    		<section id="first-footer">
-    			<div class="row expanded">
-    				<div class="large-2 large-offset-1 small-12 columns">
-						<div id="footer-logo">
-							<img src="images/hjmlogofooter.png" alt="">
-						</div>
-    				</div>
-    				<div class="large-5 small-12 columns">
-    					<h4 id="footer-logo-text">D E N T A L &nbsp L A B O R A T O R Y</h4>
-    				</div>
-    				<div class="large-4 small-12 columns">
-    					<ul class="vertical menu footer-contact-menu">
-    						<li><i class="fa fa-map-marker fa-lg top-bar-icons" id="mapMarker-icon"></i>521 Int. Inocencio St., Pasay City
-    						</li>
-    						<li><i class="fa fa-phone fa-lg top-bar-icons" id="phone-icon"></i>844-45-09   /   889-10-99   /   845-07-11</li>
-    						<li><i class="fa fa-mobile fa-2x top-bar-icons" id="mobile-icon"></i>(+63) 919 321 9329</li>
-    						<li><i class="fa fa-envelope fa-lg top-bar-icons" id="envelope-icon"></i>hjmdentallaboratory@gmail.com</li>
-    					</ul>
-    				</div>
-    			</div>
-    		</section>
-    		<section id="second-footer">
-				<ul class="menu">
-    				<li><a href="#">Privacy</a></li>
-    				<li class="dash">-</li>
-    				<li><a href="#">Terms</a></li>
-    				<li class="dash">-</li>
-    				<li><a href="#">Mobile App</a></li>
-    			</ul>
-    			<h6>Copyright © 2016 HJM Dental Laboratory. All rights reserved.</h6>
-    		</section>
-    	</div>
-    </footer>
-	
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/what-input/what-input.js"></script>
-    <script src="bower_components/foundation-sites/dist/foundation.js"></script>
-    <script src="bower_components/underscore/underscore.js"></script>
-	<script src="bower_components/moment/moment.js"></script>
-    <script src="bower_components/clndr/src/clndr.js"></script>
-	<script src="bower_components/clndr/demo/demo.js"></script>
-    <script src="js/app.js"></script>
-  </body>
-</html>

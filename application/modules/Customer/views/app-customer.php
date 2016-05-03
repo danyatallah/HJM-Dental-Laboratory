@@ -179,7 +179,8 @@
 			<table id="j-table" class="display responsive nowrap" cellspacing="0" width="100%">
 				<thead>
 					<tr>
-						<th style="width: 400px;"><i class="fa fa-user fa-lg table-icon"></i>Customer Name / Company
+						<th></th>
+						<th style="width: 250px;"><i class="fa fa-user fa-lg table-icon"></i>Customer Name / Company
 						</th>
 						<th><center>Address</center></th>
 						<th>Contact Number</th>
@@ -202,46 +203,22 @@
 				echo		
 						'
 							<tr>
+									<td></td>
 									<td><a href="'.base_url("Customer/CustomerInfo").'/'.$dentist->DentistID.'"><h5><strong>'.$dentist->title.' '.$dentist->firstname.' '.$dentist->lastname.'</strong></h5></a>
 											<p class="subheader">'.$dentist->company.'</p>
 											</td>
-											<td>'.$dentist->bstreet.', '.$dentist->bbrgy.', '.$dentist->bcity.'</td>
+											<td><center>'.$dentist->bstreet.', '.$dentist->bbrgy.', '.$dentist->bcity.'</center></td>
 											<td>'.$dentist->mobile.'</td>
 											<td>
 											<a href="Customer/deleteDentist/'.$dentist->DentistID.'"class="button float-right hvr-icon-forward alert">Make Inactive</a>
-										
-										
-								
-				</td>
-			</tr>'
+									</td>
+							</tr>'
 					;
 			}
 		}
 	?>			
 
-								<div class="reveal" id="transaction-modal" data-reveal>
-									<ul class="menu vertical">
-								  			<h3><strong>New Transaction</strong></h3>
-									  <li id="new-case"><a href="#"><i class="fa fa-pencil-square-o fa-2x"></i>New Case</a></li>
-									  <hr>
-									  <li id="new-invoice"><a href="#"><i class="fa fa-clipboard fa-2x"></i>Make Invoice</a></li>
-									  <hr>
-									  <li id="new-inactive"><a href="#" data-open="inactive-modal" ><i class="fa fa-ban fa-2x"></i>Make Account Inactive</a></li>
-									</ul>
-										  <button class="close-button" data-close aria-label="Close modal" type="button">
-											<span aria-hidden="true">&times;</span>
-										  </button>
-								</div>
-								<div class="reveal" id="inactive-modal" data-reveal>
-								 <i class="fa fa-exclamation-triangle fa-3x" style="color: red; margin: 0 auto;"></i><p>Are you sure you want to make <?php echo $name;?> inactive?</p>
-								  <hr>
-								  <button data-close class="button float-left hvr-icon-back success" >No</button>
-								  
-								  <button class="close-button" data-close aria-label="Close reveal" type="button">
-									<span aria-hidden="true">&times;</span>
-								  </button>
-								</div>
-							</div>
+							
 						
 				</tbody>			
 			</table>

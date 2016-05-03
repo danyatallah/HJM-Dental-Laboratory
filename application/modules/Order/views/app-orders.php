@@ -142,7 +142,7 @@
 				</ul>
 			<div class="row expanded">
 				<div class="column medium-12 medium-order-2 large-10 large-order-1">
-		<table id="example" class="display responsive" cellspacing="0" width="100%">
+		<table id="j-table" class="display responsive" cellspacing="0" width="100%">
 					<thead>
 						<tr>
 							<th></th>

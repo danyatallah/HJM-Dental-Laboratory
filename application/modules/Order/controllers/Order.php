@@ -33,7 +33,7 @@ class Order extends MX_Controller
         //load upload class library
         $this->load->library('upload', $config);
 
-        if (!$this->upload->do_upload('filename'))
+        /*if (!$this->upload->do_upload('filename'))
         {
             // case - failure
             $upload_error = array('error' => $this->upload->display_errors());
@@ -42,7 +42,7 @@ class Order extends MX_Controller
         else
         {
             // case - success
-           $upload_data = $this->upload->data();
+           $upload_data = $this->upload->data();*/
 			if($this->input->post('submit'))
 			{
 			
@@ -54,18 +54,30 @@ class Order extends MX_Controller
 									'gender' =>$_POST['gender'],
 									'age' => $_POST['age'],
 									'notes' => $_POST['notes'],
-									'file' => $upload_data['file_name']
+									//'file' => $upload_data['file_name']
 									);
 						
 						if($this->mdlOrder->AddOrder($case))
-						redirect('Customer/CustomerInfo/'.$_POST['DentistID']);
+						{
 
+							if($this->session->userdata('ps_id') == 1)
+							{
+								redirect('Dashboard');
+							}
+							else
+							{
+								
+								redirect('Customer/CustomerInfo/'.$_POST['DentistID']);
+
+							}
+								
+						}
 			}
 			else
 			{
 				$this->load->view('users/register');
 			}
-		}
+		//}
 
 	}
 
@@ -80,9 +92,9 @@ class Order extends MX_Controller
         $config['max_size']    = '30720';
 
         //load upload class library
-        $this->load->library('upload', $config);
+        /*$this->load->library('upload', $config);
 
-        if (!$this->upload->do_upload('filename'))
+        if (!$this->upload->do_upload('file'))
         {
             // case - failure
             $upload_error = array('error' => $this->upload->display_errors());
@@ -91,7 +103,7 @@ class Order extends MX_Controller
         else
         {
             // case - success
-           $upload_data = $this->upload->data();
+           $upload_data = $this->upload->data();*/
 			if($this->input->post('submit'))
 			{
 			
@@ -104,18 +116,30 @@ class Order extends MX_Controller
 									'gender' =>$_POST['gender'],
 									'age' => $_POST['age'],
 									'notes' => $_POST['notes'],
-									'file' => $upload_data['file_name']
+									//'file' => $upload_data['file_name']
 									);
 						
 						if($this->mdlOrder->modifyOrder($case))
-						redirect('Customer/CustomerInfo/'.$_POST['DentistID']);
+						{
 
+							if($this->session->userdata('ps_id') == 1)
+							{
+								redirect('Dashboard');
+							}
+							else
+							{
+								
+								redirect('Customer/CustomerInfo/'.$_POST['DentistID']);
+
+							}
+								
+						}
 			}
 			else
 			{
 				$this->load->view('users/register');
 			}
-		}
+		//}
 
 	}
 	public function EditDentist()

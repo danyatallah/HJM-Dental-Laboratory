@@ -6,8 +6,25 @@ class Customer extends MX_Controller
 		parent::__construct();
 		$this->load->view('template/header');
 		$this->load->model('mdlCustomer');
+		$this->is_logged_in();
 	}
-	
+	 public function logout()
+    {
+        $this->session->sess_destroy();
+        redirect('Home');
+    } 
+	public function is_logged_in()
+    {
+        $is_logged_in = $this->session->userdata('is_logged_in');
+        if( $this->session->userdata('is_logged_in') != true) 
+        {
+            redirect('Home');
+        }
+        if( $this->session->userdata('is_logged_in') == true && $this->session->userdata('ps_id')!=2) 
+        {
+            redirect('Dashboard');
+        }
+    }
 	public function index(){
 		$data['dentists'] = $this->mdlCustomer->getDentist(array());	
 		$this->load->view('app-customer',$data);
